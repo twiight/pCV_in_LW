@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2cm]{geometry}  % only to bring all on one page
+\usepackage{caption}
+\captionsetup{compatibility=false}
+\usepackage{graphicx}
+\pagestyle{empty}
+\DeclareCaptionFormat{cont}{#1 (continued.)#2#3\par}
+\begin{document}
+	
+
+\begin{figure*}[ht]
+  \centering
+  \includegraphics[page=1,scale=0.9]{plot_figure_LW.pdf}
+  \caption{First figure}
+\end{figure*}
+
+\begin{figure*}[ht]
+   \ContinuedFloat
+   \captionsetup{list=off,format=cont}
+  \centering
+  \includegraphics[page=2,scale=0.9]{plot_figure_LW.pdf}
+  \caption{First figure continued}
+\end{figure*}
+
+\begin{figure*}[ht]
+ \ContinuedFloat
+ \captionsetup{list=off,format=cont}
+  \centering
+  \includegraphics[page=3,scale=0.9]{plot_figure_LW.pdf}
+  \caption{First figure continued}
+\end{figure*}
+
+ \begin{figure*}[ht]
+ \ContinuedFloat
+ \captionsetup{list=off,format=cont}
+  \centering
+  \includegraphics[page=4,scale=0.9]{plot_figure_LW.pdf}
+  \caption{First figure continued}
+\end{figure*}
+
+\begin{figure*}[ht]
+ \ContinuedFloat
+ \captionsetup{list=off,format=cont}
+  \centering
+  \includegraphics[page=5,scale=0.9]{plot_figure_LW.pdf}
+  \caption{First figure continued}
+\end{figure*}
+
+\begin{figure*}[ht]
+ \ContinuedFloat
+ \captionsetup{list=off,format=cont}
+  \centering
+  \includegraphics[page=6,scale=0.9]{plot_figure_LW.pdf}
+  \caption{First figure continued}
+\end{figure*}
+
+  
+\end{document}
