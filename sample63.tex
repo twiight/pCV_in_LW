@@ -212,7 +212,7 @@ Besides, in order to compensate for uneven distribution over the bins, we provid
 For the sake of changing aimpoint, we used individual source extract region for different observations. Explicitly, the 90\% ECR aperture  whose radius defined by specific PSF map was applied for counts in that observation. Since the phase-folding method directly manipulated each photons and we could not distinguish background photon from source photon, the local background information were not provided for timing analysis. The combination of each source event list and the corresponding epoch were then employed as the input of GL method. 
 \\
 \indent
-As mentioned in section \ref{sec:methods}, the GL method fold the dataset at trial period or frequency. Then the resolution of frequency must be balanced between computational power and  accuracy. Here we generate the frequency resolution depended on the data timescale.
+As mentioned in section \ref{subsec:GL}, the GL method fold the dataset at trial period or frequency. Then the resolution of frequency must be balanced between computational power and  accuracy. Here we generate the frequency resolution depended on the data timescale.
 \\
 \indent
 For the data span in timescale T, the arrival time of photon $t_i$, the changing angular frequency influence the phase of photon more as $i$ grows. The most vulnerable photon is the last photon arrived, whose arrival time is T, and the change of phase is 
@@ -497,7 +497,7 @@ Based on our current understanding of the shape and distribution of orbital modu
 
 \section{Discussion}\label{sec:discussion}
 \subsection{Comparison with previous work}
-In this work, we took the same observations as used by \cite{2012ApJ...746..165H}. However, unlike \cite{2012ApJ...746..165H} extracted only the some nearby observations , all the observations were applied here for timing analysis. That difference was caused by the mechanisms of methods. As described in section \ref{sec:methods}, the LS method used by \cite{2012ApJ...746..165H} handled the light curve in time space, while GL method utilized here  processed the phase-folded light curve in phase space with great tolerance for observing gap.
+In this work, we took the same observations as used by \cite{2012ApJ...746..165H}. However, unlike \cite{2012ApJ...746..165H} extracted only the some nearby observations , all the observations were applied here for timing analysis. That difference was caused by the mechanisms of methods. As described in section \ref{subsec:GL}, the LS method used by \cite{2012ApJ...746..165H} handled the light curve in time space, while GL method utilized here  processed the phase-folded light curve in phase space with great tolerance for observing gap.
 
  We provide the comparison between the detection rate of these two methods in Figure \ref{fig:com}, which are also shown in column (10) and (11) in Table \ref{tab:src}. To eliminate the effect of different choice of amplitude for the same source, we used the same $A_0$ of these ten sources given by \cite{2012ApJ...746..165H} and applied these to both methods. It can easily be seen that GL method has better performance compared with LS method.
 
