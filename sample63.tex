@@ -95,7 +95,7 @@ In this work, we have taken full usage of \emph{Chandra} observations for LW. Me
 Section \ref{sec:obs} describes the observation we used and the source detection process. Section \ref{sec:methods} gives a brief overview about the main methods for period finding and focuses on the GL method we adopted in this work. Section \ref{sec:timing} is devoted to the operation process of period finding and long timescale variability analysis. Also it addresses the detection completeness obtained from simulation. Section \ref{sec:spectra} presents the spectra analysis for these periodic sources and the estimation of mass of WDs based on the Fe line diagnostic. Section \ref{sec:properties} deliberates over the nature of these periodic sources based on their phase-folded light curve. The comparison with previous work and the X-ray source population in the LW would be summarized in Section \ref{sec:discussion}.
 
 \section{X-ray Data Preparation} \label{sec:obs}
-\subsection{{\it Chandra} observations}
+\subsection{{\it Chandra} observations} \label{subsec:xdata}
 The LW towards the inner Galactic bulge has been extensively observed by {\it Chandra} with its Advanced CCD Imaging Spectrometer (ACIS).
 A total of 13 ACIS-I observations were taken, three in 2005 and ten in 2008, resulting in a total exposure of 982 ks.
 A log of these observations is given in Table \ref{tab:obsinfo}. 
@@ -146,7 +146,7 @@ Hence we preserved all the science exposures for source detection and subsequent
 %\tablecomments{}
 \end{deluxetable*}
 
-\subsection{Source detection}\label{longT}
+\subsection{Source detection}\label{subsec:detect}
 By design, the LW suffers from moderate line-of-sight extinction, $N_{\rm H} \approx 7\times10^{21}{\rm~cm^{-2}}$ \citep{2011MNRAS.414..495R}, which obscures X-ray photons with energies $\lesssim$ 1 keV.
 %there would be a large number of active binaries (AB) as foreground sources. ABs emit X-rays mainly below 2keV. Thus we use 2-8 keV to do source detection. 
 Here we focus on sources prominent in the 2--8 keV band, which are most likely located in the Galactic bulge. This will also facilitate a direct comparison with the X-ray sources found in the Nuclear Star Cluster \citep{2018ApJS..235...26Z}, the line-of-sight column density of which, $N_{\rm H} \sim 10^{23}{\rm~cm^{-2}}$, is only transparent to photons with energies $\gtrsim$2 keV. 
@@ -179,7 +179,9 @@ We further define for each source an inter-observation {\it variability index}, 
 \label{fig:FoV}
 \end{figure*}
 
-\section{Period Finding Algorithm}\label{sec:methods}
+\section{Period Finding Method}\label{sec:methods}
+
+\subsection{The Gregory-Loredo Algorithm} \label{subsec:GL}
 The period-finding algorithms can be divided into three groups. 
 \\
 \indent
@@ -203,14 +205,14 @@ $N$ represents the total number of counts in data, $m$ signifies the number of b
 
 In general, firstly we got the multiplicity for all the set of $(m,\omega, \phi)$. secondly, the integration was applied in $(\omega, \phi)$space, producing the so-called "odds ratio" using Bayesian theorem when m took a certain value. Thirdly, the probability of whether the dataset is periodic was obtained by the sum of normalized odds ratio. Finally, comparing all the odds ratio integrated at only $\phi$ space, the $\omega$ with the highest odds ratio, corresponding the period of signal.
 
-\section{Period searching procedure}\label{sec:timing}
-\subsection{Periodic variability}\label{periodic}
+%\section{Period searching procedure}\label{sec:timing}
+\subsection{Application to the LW}\label{subsec:procedure}
 Though we did source detection in 2-8 keV band to reduce the contamination from non-CV sources, here we still extracted photons from sources in 1-8 keV band to keep as more as possible source information. 
 Besides, in order to compensate for uneven distribution over the bins, we provide "epoch" for each source. The "epoch" offered the start time and end time of each observations covered the source with at least one counts in source region. See \ref{A17} in appendix for detailed illustration about the use of epoch. 
 For the sake of changing aimpoint, we used individual source extract region for different observations. Explicitly, the 90\% ECR aperture  whose radius defined by specific PSF map was applied for counts in that observation. Since the phase-folding method directly manipulated each photons and we could not distinguish background photon from source photon, the local background information were not provided for timing analysis. The combination of each source event list and the corresponding epoch were then employed as the input of GL method. 
 \\
 \indent
-As mentioned in \ref{sec:methods}, the GL method fold the dataset at trial period or frequency. Then the resolution of frequency must be balanced between computational power and  accuracy. Here we generate the frequency resolution depended on the data timescale.
+As mentioned in section \ref{sec:methods}, the GL method fold the dataset at trial period or frequency. Then the resolution of frequency must be balanced between computational power and  accuracy. Here we generate the frequency resolution depended on the data timescale.
 \\
 \indent
 For the data span in timescale T, the arrival time of photon $t_i$, the changing angular frequency influence the phase of photon more as $i$ grows. The most vulnerable photon is the last photon arrived, whose arrival time is T, and the change of phase is 
