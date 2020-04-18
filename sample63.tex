@@ -175,24 +175,24 @@ We further define for each source an inter-observation {\it variability index}, 
 \begin{figure*}[htbp]
 \centering
 \includegraphics[scale=0.8]{./figure/LW/all_pCVf.eps}
-\caption{2--8 keV counts image of the Limiting Window, combining 13 {\it Chandra}/ACIS-I observations. Locations of the 24 periodic sources are marked with circles ({\it magenta}: 10 sources previously found by \cite{2012ApJ...746..165H}; {\it red}: 12 newly discovered in this work and belonging to the Galactic bulge; {\it green}: two newly discovered and located in the foreground) and numbered as in Table~\ref{tab:src}.}
+\caption{2--8 keV counts image of the Limiting Window, combining 13 {\it Chandra}/ACIS-I observations. Locations of the 24 periodic sources are marked with colored circles ({\it magenta}: 10 sources previously reported by \cite{2012ApJ...746..165H}; {\it red}: 12 newly discovered in this work and belonging to the Galactic bulge; {\it green}: two newly discovered and located in the foreground). Source numbering is the same as in Table~\ref{tab:src}.}
 \label{fig:FoV}
 \end{figure*}
 
-\section{Period Finding Method}\label{sec:methods}
-In this section, we first provide our motivation of employing the Gregory-Loredo (GL) algorithm, followed by a description of its basic principles. We then elucidate our application of the algorithm to the {\it Chandra} data of the LW. This is complemented by a procedure of evaluating the detection (in)completeness.  
+\section{Period Searching Method}\label{sec:methods}
+In this section, we first provide our motivation of employing the Gregory-Loredo (GL) algorithm, followed by a description of its basic principles (Section~\ref{subsec:GL}). We then elucidate our application of the GL algorithm to the {\it Chandra} data of the LW (Section~\ref{subsec:appli}). This is complemented by a procedure of evaluating the detection (in)completeness (Section~\ref{subsec:simulation}).  
 
 \subsection{The Gregory-Loredo Algorithm} \label{subsec:GL}
-The period-finding algorithms can be divided into three groups. 
+There exists in the literature a variety of period-searching methods, which can be broadly divided into three categories according to their working principles. 
 \\
 \indent
-The most traditional algorithms are based on Fourier transform and its power density spectra, which includes the classical methods named Schuster periodogram \citep{1898TeMag...3...13S}, the fourier analysis with unequally-Spaced Data \citep{1975Ap&SS..36..137D}, the correlation-based method \citep{1988ApJ...333..646E} and so on.
+The most traditional method is based on Fourier transform and its power density spectra, which includes the classical Schuster periodogram \citep{1898TeMag...3...13S}, the Fourier analysis with unequally-spaced data \citep{1975Ap&SS..36..137D}, the correlation-based method \citep{1988ApJ...333..646E}, among others.
 \\
 \indent
-Another method is called the least square method, which fits the data with a model in frequency space. Using statistics like least-squares residuals to define the likelihood function and then selecting the frequency which maximizes the likelihood. The famous periodogram called Lomb-Scargle \citep[hereafter LS]{1976Ap&SS..39..447L,1982ApJ...263..835S} also belongs to this category. Note that when choosing trigonometric functions, the least-squares method always falls into Fourier method. Another track is to replace the least-squares residuals with polynomial fits, such as \citep{1996ApJ...460L.107S}.
+Another widely-used method seeks to fit the data with a periodic model in the frequency space, employing statistics such as least-squares residuals to define the likelihood function and then selecting the frequency that maximizes the likelihood. The famous Lomb-Scargle periodogram \citep[hereafter LS]{1976Ap&SS..39..447L,1982ApJ...263..835S} belongs to this category. Note that when adopting trigonometric functions, the least-squares method falls into the Fourier method. Another variant is to replace the least-squares residuals with polynomial fits, such as that used in \citet{1996ApJ...460L.107S}.
 \\
 \indent
-The last group is phase-folding methods. The procedure is described as follows. Firstly, choose a trial period. Secondly, fold data set from observations as a function of phase. Thirdly, optimize the cost function through frequency space. Methods falling in this category use diverse cost functions. Several widely known examples are Epoch Folding (EF) method \citep{1983ApJ...266..160L}, the Phase Dispersion Minimization \citep{1978ApJ...224..953S}, the Gregory-Loredo (GL) method \citep{1992ApJ...398..146G}.
+The last category is the phase-folding method. For each trial period the time-tagged data is folded as a function of phase, and the best-fit period is found by optimizing the cost function {\bf [what is the cost function?]} through the frequency space. Methods belonging this category use diverse cost functions. Several widely known examples are the Epoch Folding (EF) algorithm \citep{1983ApJ...266..160L}, the Phase Dispersion Minimization \citep{1978ApJ...224..953S}, the GL algorithm \citep{1992ApJ...398..146G}.
 \\
 \indent
 For X-ray observation, the detection for periodic signals is often applied in sparse astronomical event data. The relatively few detected photons makes it inappropriate for the first two groups of methods since they need photometric data. Though we could choose a length of time bin to covert the event data to photometric data, the small number of  photons makes lower signal-to-noise ratio when using time bins. Fortunately, the phase-folding methods directly manipulate each photons and thus keep the full information from observation. Another characteristic for astronomical observation is the interrupted time series. In frequency space, this kind of window function leads to the heavy contamination for intrinsic data. Still, the phase-folding methods can avoid the effect of non-uniformed data since the process does not contain information in non-observed time. 
@@ -207,7 +207,7 @@ $N$ represents the total number of counts in data, $m$ signifies the number of b
 In general, firstly we got the multiplicity for all the set of $(m,\omega, \phi)$. secondly, the integration was applied in $(\omega, \phi)$space, producing the so-called "odds ratio" using Bayesian theorem when m took a certain value. Thirdly, the probability of whether the dataset is periodic was obtained by the sum of normalized odds ratio. Finally, comparing all the odds ratio integrated at only $\phi$ space, the $\omega$ with the highest odds ratio, corresponding the period of signal.
 
 %\section{Period searching procedure}\label{sec:timing}
-\subsection{Application to the LW}\label{subsec:procedure}
+\subsection{Application to the LW}\label{subsec:appli}
 Though we did source detection in 2-8 keV band to reduce the contamination from non-CV sources, here we still extracted photons from sources in 1-8 keV band to keep as more as possible source information. 
 Besides, in order to compensate for uneven distribution over the bins, we provide "epoch" for each source. The "epoch" offered the start time and end time of each observations covered the source with at least one counts in source region. See \ref{A17} in appendix for detailed illustration about the use of epoch. 
 For the sake of changing aimpoint, we used individual source extract region for different observations. Explicitly, the 90\% ECR aperture  whose radius defined by specific PSF map was applied for counts in that observation. Since the phase-folding method directly manipulated each photons and we could not distinguish background photon from source photon, the local background information were not provided for timing analysis. The combination of each source event list and the corresponding epoch were then employed as the input of GL method. 
@@ -249,7 +249,7 @@ The total span of 13 observation is about three years, i.e., $10^8s$, so the res
 
 Generally, for each source, we provide the dataset for GL method. Then we got the most periodic signal with its probability in three period ranges. Taking 90\% as threshold to determine the periodicity, finally we choose all the candidate sources with at least one periodic signal.
 
-\subsection{Detection completeness}\label{simulation}
+\subsection{Detection completeness}\label{subsec:simulation}
 In order to examine the detection rate for GL method, we did numerous simulations. The routine follows as described by \citep{1998ApJ...498..666C}. We took sinusoidal variation for a specific counts rate. Since the limit of computational power, the simulation were run at limited numbers of parameters. The parameters includes the modulation period $P$, the original counts rate $\lambda_0$ and the variation amplitude $A_0$. The variation obeys $\lambda (t)=\lambda_0 \times (1+A_{0}sin(\omega t))$. For directly comparing with observation, we replaced $\lambda_0$ with number of counts calculated from exposure time. Since the total exposure time ($T$) is far longer than modulation period ($P$), then the number of counts is approximately equal to $T/\lambda_0$. We casually chose three period in different period ranges, which was 554s, 5540s, 45540s. The values were not chosen by any physical reasons. These three period represent the performance of GL method in three period ranges. 
 
 The simulation is operated with counts(cts=$50-500$), amplitudes($A_0$=$0.5-0.9$), period(P=$554s,5540s,45540s$). The top, middle, bottom panel of Figure \ref{fig:detection} show the results of three period respectively. For each set of parameter, the GL method were run on 100 sinusoidal light curves.
@@ -289,7 +289,7 @@ The period was also chosen causally, at P=5258s and P=15258s. Then the simulatio
 % \indent
 % The long timescale variability analysis was only applied for the preliminary results of GL methods, i.e., the candidate periodic sources, since the time limit resulted from visual examination for regions.
 
-\section{Period finding results}\label{sec:results}
+\section{Period Searching Results}\label{sec:results}
 \subsection{Filtering detections}
 From period searching by GL method and taking 90\% as threshold, we got 73 periodic signals in three period ranges. The spurious detections are severe, resulted by many reasons.
 \\
