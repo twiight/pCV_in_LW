@@ -243,18 +243,22 @@ The total span of 13 observation is about three years, i.e., $10^8s$, so the res
 Generally, for each source, we provide the dataset for GL method. Then we got the most periodic signal with its probability in three period ranges. Taking 90\% as threshold to determine the periodicity, finally we choose all the candidate sources with at least one periodic signal.
 
 \subsection{Detection completeness}\label{subsec:simulation}
-In order to examine the detection rate for GL method, we did numerous simulations. The routine follows as described by \citep{1998ApJ...498..666C}. We took sinusoidal variation for a specific counts rate. Since the limit of computational power, the simulation were run at limited numbers of parameters. 
-The intrinsic light curve follows,
+For a given period searching algorithm, the detection rate depends on both the number of observed counts and the intrinsic shape of light curve.
+We perform simulations to quantify the detection rate, following the merit of \citep{1998ApJ...498..666C}. 
+Two functional forms of light curve are considered: a sinusoidal function and a piecewise function. While these are idealized shapes, they can represent realistic light curves, e.g, resulted from rotational modulation or eclipsing. 
+
+A sinusoidal light curve follows,
 \begin{equation}
-\lambda (t)=\lambda_0 \times [1+A_{0}sin(\omega t)], 
+\lambda (t)=\lambda_0[1+A_{0}{\rm sin}(\omega t+\phi)], 
 \label{eqn:sin}
 \end{equation}
 where $\omega = 2{\pi}/P$ is the frequency, $A_0$ the variation amplitude, and $\lambda_0$ the mean count rate which may include contribution from a constant background. 
 For a direct comparison with the observation, we replaced $\lambda_0$ with the total number of counts, $C = \lambda_0 T$, where $T$ is the exposure time of a given observation. This holds since $T$ is typically much longer than the modulation period ($P$). 
-We casually chose three period in different period ranges, which was 554s, 5540s, 45540s. The values were not chosen by any physical reasons. These three period represent the performance of GL method in three period ranges. 
+%Since the limit of computational power, the simulation were run at limited numbers of parameters. 
+We casually chose three period in different period ranges, which was 554, 5540 and 45540 sec. The values were not chosen by any physical reasons. These three period represent the performance of GL method in three period ranges. 
 
 The simulation is operated with counts(cts=$50-500$), amplitudes($A_0$=$0.5-0.9$), period(P=$554s,5540s,45540s$). The top, middle, bottom panel of Figure \ref{fig:detection} show the results of three period respectively. For each set of parameter, the GL method were run on 100 sinusoidal light curves.
-The valid detection of GL method need to constrain the period at 0.1\% accuracy and get periodical  probability beyond 90\%.
+The valid detection of GL method need to constrain the period at 0.1\% accuracy and get periodical probability beyond 90\%.
 The detection rate is the proportion of the number of valid detections in one hundred.
 
 \begin{figure}[htbp]
@@ -265,16 +269,18 @@ The detection rate is the proportion of the number of valid detections in one hu
 \end{figure}
 We could think of 0.1 as extremely low. Then it is obviously illustrated that when counts equals 50, the detection rate are almost always extremely low despite the period and amplitude, except for the longest period and high amplitude. While for counts of 100, the detection rate could invariably exceed 50\%, which is sufficient enough for period finding procedure. Thus we could roughly say that when counts lower than 100, the detection rate is extremely low. The periodic signal in this circumstance are not reliable. Besides, it can be seen that the algorithm is nearly no bias of period, except a slight improvement of detection rate with increasing period.
  
- The similar simulation was also operated on eclipsing models. It could be described by a piecewise function, including $\lambda_0$, $d$, $a$ as parameters. The $d$ denotes the eclipsing width(duration) in phase space and the depth of eclipse is characterized by $a$, where $0<a<1$.
+The piecewise function, which mimics an eclipse against an otherwise constant flux, takes the form of
+
 \begin{equation}
 \lambda(t)=
 \begin{cases}
-\lambda_0 & \text{$\phi(t) \in(0,{{1-d}\over{2}})\cup ({{1+d}\over{2}},1)$}\\
-\lambda_0 \times a & \text{$\phi(t) \in({{1-d}\over{2}},{{1+d}\over{2}})$}
+\lambda_0 & \text{$\phi(t)/2\pi \in[0,{{1-w}\over{2}})\cup ({{1+w}\over{2}},1]$},\\
+f\lambda_0 & \text{$\phi(t)/2\pi \in[{{1-w}\over{2}},{{1+w}\over{2}}]$},
 \end{cases}	
 \end{equation}
+where $w$ accounts for the eclipsing width (duration) in phase space, and $f$ characterizes the fractional depth of the eclipse, with $0\leq f \leq 1$. Here the eclipse is assumed to occur around $\phi = \pi$.
 
-We took $a=0.1$, $w=0.1$ as constant, in order to obtain the relation between detection rate and number of counts. These two values are really typical for the case of CV, since the radius ratio of WD, companion star and orbit are about   1:10:50. The relation between counts number N and $\lambda_0$ is $N=(1-0.1*0.9)\lambda_0T$.
+We took $f=0.1$, $w=0.1$ as constant, in order to obtain the relation between detection rate and number of counts. These two values are really typical for the case of CV, since the radius ratio of WD, companion star and orbit are about   1:10:50. The relation between counts number N and $\lambda_0$ is $N=(1-0.1*0.9)\lambda_0T$.
 The period was also chosen causally, at P=5258s and P=15258s. Then the simulation were run 100 times at each set of parameter. Results of detection rate(also taking 90\% as threshold) is shown is Figure \ref{fig:eclipse}. It is noteworthy that the efficiency soars to 1 when the number of counts goes up. And a marked rise appears with the growth of period.
  
 \begin{figure}[ht!]
