@@ -252,36 +252,41 @@ A sinusoidal light curve follows,
 \lambda (t)=\lambda_0[1+A_{0}{\rm sin}(\omega t+\phi)], 
 \label{eqn:sin}
 \end{equation}
-where $\omega = 2{\pi}/P$ is the frequency, $A_0$ the variation amplitude, and $\lambda_0$ the mean count rate which may include contribution from a constant background. 
-For a direct comparison with the observation, we replaced $\lambda_0$ with the total number of counts, $C = \lambda_0 T$, where $T$ is the exposure time of a given observation. This holds since $T$ is typically much longer than the modulation period ($P$). 
-%Since the limit of computational power, the simulation were run at limited numbers of parameters. 
-We casually chose three period in different period ranges, which was 554, 5540 and 45540 sec. The values were not chosen by any physical reasons. These three period represent the performance of GL method in three period ranges. 
+where $\omega = 2{\pi}/P$, $A_0$ is the variation amplitude, and $\lambda_0$ is the mean count rate which may include contribution from a constant background. The phase $\phi$ is arbitrarily set at zero.
+For a direct comparison with the observation, we relate $\lambda_0$ with the total number of counts, $C = \lambda_0 T$, where $T$ is the exposure time of a given observation. This holds since $T$ is typically much longer than the modulation period ($P$). 
+The simulations are run with a limited numbers of parameters due to constraints in computational power. 
+Specifically, we adopt total counts $C$=50, 100, 200, 300, 400 and 500, amplitudes $A_0$=0.5, 0.6, 0.7, 0.8 and 0.9, and periods $P$=554, 5540 and 45540 sec, resulting in 6x5x3=90 combinations. 
+The chosen periods are representative of the period ranges considered in Section~\ref{subsec:appli}.
+The adopted total counts also well cover the range of observed counts from the LW sources.
 
-The simulation is operated with counts(cts=$50-500$), amplitudes($A_0$=$0.5-0.9$), period(P=$554s,5540s,45540s$). The top, middle, bottom panel of Figure \ref{fig:detection} show the results of three period respectively. For each set of parameter, the GL method were run on 100 sinusoidal light curves.
-The valid detection of GL method need to constrain the period at 0.1\% accuracy and get periodical probability beyond 90\%.
-The detection rate is the proportion of the number of valid detections in one hundred.
+We thus simulate 100 light curves for each combination of parameters, taking into account Poisson errors and the exact exposures of the 13 ACIS-I observations. {\bf [is this the case?]}
+We then search for a period from the simulated light curve using the GL algorithm in the same manner as in Section~\ref{subsec:appli}.
+The resultant period is considered a valid detection if it has a detection probability greater than 90\% and its value is consistent with the input period to within 0.1\%. 
+The detection rate for a given combination of parameters is taken to be the fraction of 100 light curves with a valid detection, 
 
+The top, middle, bottom panel of Figure \ref{fig:detection} show the results of three period respectively. 
+We could think of 0.1 as extremely low. Then it is obviously illustrated that when counts equals 50, the detection rate are almost always extremely low despite the period and amplitude, except for the longest period and high amplitude. While for counts of 100, the detection rate could invariably exceed 50\%, which is sufficient enough for period finding procedure. Thus we could roughly say that when counts lower than 100, the detection rate is extremely low. The periodic signal in this circumstance are not reliable. Besides, it can be seen that the algorithm is nearly no bias of period, except a slight improvement of detection rate with increasing period.
+ 
 \begin{figure}[htbp]
 \gridline{\fig{./figure/sim_LW/detection_554_temp.eps}{0.45\textwidth}{}}
 \gridline{\fig{./figure/sim_LW/detection_5540_temp.eps}{0.45\textwidth}{}}
 \gridline{\fig{./figure/sim_LW/detection_45540_temp.eps}{0.45\textwidth}{}}
 \caption{Detection rate obtained from simulation results for sinusoidal variation. The results of top, middle, bottom are respectively from modulation period as 554s, 5540s, 45540s. The other two parameters, $A_{0}$ and number of counts, are labeled by x-axis and colors. \label{fig:detection}}
 \end{figure}
-We could think of 0.1 as extremely low. Then it is obviously illustrated that when counts equals 50, the detection rate are almost always extremely low despite the period and amplitude, except for the longest period and high amplitude. While for counts of 100, the detection rate could invariably exceed 50\%, which is sufficient enough for period finding procedure. Thus we could roughly say that when counts lower than 100, the detection rate is extremely low. The periodic signal in this circumstance are not reliable. Besides, it can be seen that the algorithm is nearly no bias of period, except a slight improvement of detection rate with increasing period.
- 
-The piecewise function, which mimics an eclipse against an otherwise constant flux, takes the form of
 
+The piecewise function, which mimics an eclipse against an otherwise constant flux, takes the form of
 \begin{equation}
 \lambda(t)=
 \begin{cases}
-\lambda_0 & \text{$\phi(t)/2\pi \in[0,{{1-w}\over{2}})\cup ({{1+w}\over{2}},1]$},\\
-f\lambda_0 & \text{$\phi(t)/2\pi \in[{{1-w}\over{2}},{{1+w}\over{2}}]$},
+\lambda_0 & \text{$\phi(t) \in[0,(1-w)\pi)\cup ((1+w)\pi,2\pi]$},\\
+f\lambda_0 & \text{$\phi(t) \in[(1-w)\pi,(1+w)\pi]$},
 \end{cases}	
 \end{equation}
-where $w$ accounts for the eclipsing width (duration) in phase space, and $f$ characterizes the fractional depth of the eclipse, with $0\leq f \leq 1$. Here the eclipse is assumed to occur around $\phi = \pi$.
-
-We took $f=0.1$, $w=0.1$ as constant, in order to obtain the relation between detection rate and number of counts. These two values are really typical for the case of CV, since the radius ratio of WD, companion star and orbit are about   1:10:50. The relation between counts number N and $\lambda_0$ is $N=(1-0.1*0.9)\lambda_0T$.
-The period was also chosen causally, at P=5258s and P=15258s. Then the simulation were run 100 times at each set of parameter. Results of detection rate(also taking 90\% as threshold) is shown is Figure \ref{fig:eclipse}. It is noteworthy that the efficiency soars to 1 when the number of counts goes up. And a marked rise appears with the growth of period.
+where $w$ accounts for the eclipsing width (duration) in phase space, and $f$ characterizes the fractional depth of the eclipse, with $0\leq f \leq 1$. Here the eclipse is assumed to occur around $\phi = \pi$. 
+Again, $\lambda_0$ can be related to the total counts as $C=(1-fw)\lambda_0T$.
+We set $f=0.1$ and $w=0.1$ in our simulations, which are typical of eclipsing CVs, since the radius ratio of WD, companion star and orbit are about 1:10:50. {\bf [$f$ might be too small. better try more values]}
+We test two values for the period, $P$=5258 and 15258 sec. {\bf [some justifications for these values are warranted]} 
+Then the simulation were run 100 times at each set of parameter. Results of detection rate(also taking 90\% as threshold) is shown is Figure \ref{fig:eclipse}. It is noteworthy that the efficiency soars to 1 when the number of counts goes up. And a marked rise appears with the growth of period.
  
 \begin{figure}[ht!]
 \centering
@@ -299,23 +304,19 @@ The period was also chosen causally, at P=5258s and P=15258s. Then the simulatio
 \section{Period Searching Results}\label{sec:results}
 \subsection{Filtering detections}
 From period searching by GL method and taking 90\% as threshold, we got 73 periodic signals in three period ranges. The spurious detections are severe, resulted by many reasons.
-\\
-\indent
+
 (1) There are repetitious detection for the same intrinsic signal caused by second and third harmonics. Luckily, it's easy to identified by phase-folded light curves If we assume that it's a single-peak structure. We had to assume that there was no half harmonics and took the lowest period signal as the real period. Discussion about harmonics would be detailed below in section \ref{harmonics}. 
-\\
-\indent
+
 (2) The Chandra satellite was designed with dithering to distribute photons over more CCD pixels and avoid pile-up effect. The dither period is about 706.96s in pitch and 999.96s in yaw. All signals around these two and their harmonics were excluded, which happened most in the first period range.
-\\
-\indent
-(3) The strong outburst in long timescales would confuse the GL method since this algorithm directly analyzed the phase folded light curve. If there are too many photons in one of the observations, some phase bins would show unusual excess at long period. Then the method may "think" there is a period of the source especially in the third period range. Therefore, the periodic sources with VI>10 were excluded. 
-\\
-\indent
+
+(3) The strong outburst in long timescales would confuse the GL method since this algorithm directly analyzed the phase folded light curve. If there are too many photons in one of the observations, some phase bins would show unusual excess at long period. Then the method may "think" there is a period of the source especially in the third period range. Therefore, the periodic sources with VI>10 were excluded. {\bf [simply excluding such sources may not be the best choice. better say their periods are reexamined by excluding the outburst epoch or by including the outburst epoch only]}
+
 (4) The foreground sources is not of our interest. Meanwhile, the uncertainty of their distances resulted the unknown luminosity, which increased the confusing part of their nature. We applied the spectral fitting results to distinguish them from galactic bulge sources. If the absorption column density (hereafter $N_{H}$) is lower than $5 \times 10^{21} cm^{-2}$, it would be taken as foreground source. Though they are not spurious but valid detection, we only present their period and coordinates in Table \ref{tab:src} labeled by F1 and F2, without further discussion.
-\\
-\indent
-(5) We took N=100 as the search limit based on the simulation results. The sources whose number of counts are lower than 100 were ignored. The choice for this limit has been explained explicitly in section \ref{simulation}. The choice served as compensation for the third filtering. Due to the nearly no valid detection for faint sources, we were incapable to give VI for them following the routine of section \ref{longT}. Although we could not obtain the false-detection rate (i.e. reliability) from simulation cause of no unified long timescale variability model. It was still trustworthy to assume the higher false-detection rate for fainter sources. Collectively, we exclude the detection signal for sources under that limit. 
-\\
-\indent
+{\bf [we don't have to discard foreground sources at this point]}
+
+(5) We took N=100 as the search limit based on the simulation results. The sources whose number of counts are lower than 100 were ignored. The choice for this limit has been explained explicitly in section \ref{subsec:simulation}. The choice served as compensation for the third filtering. Due to the nearly no valid detection for faint sources, we were incapable to give VI for them following the routine of section \ref{longT}. Although we could not obtain the false-detection rate (i.e. reliability) from simulation cause of no unified long timescale variability model. It was still trustworthy to assume the higher false-detection rate for fainter sources. Collectively, we exclude the detection signal for sources under that limit. 
+{\bf [I don't fully understand these statements. The question is how much low-count sources are found to have a tentative period]}
+
 After these limitations were applied, we got 24 valid detection of periodic signal in 22 sources. Two of these sources showed two period in different period ranges.
 \subsection{Treatment of harmonics}\label{harmonics}
 
