@@ -89,8 +89,6 @@ Hence the periodicity becomes a well recognized probe to study their population,
 In \citet{2003ApJ...599..465M}, eight periodic sources were identified as mCVs in galactic center region (GCR). Then for galactic bulge region, ten periodic sources were found by using Lomb-Scargle methods \citep{2012ApJ...746..165H}. They were believed as an unusual type of mCVs with harder spectra like IPs while their period distribution resembles that of polars. The research was based on the observation of low-extinction Window fields (LW), locating at $1^{\circ}4$ south of the Galactic center. Its rarity of avoiding the obscuration from molecular cloud deserved our deeper excavation of these X-ray sources. 
 Besides, according to RK catalog \citep{2003A&A...404..301R}, the mCVs (mostly DNe) occupied 20\% in CVs sample, while for GCR, this fraction was reckoned over 30-40\% \citep{2016ApJ...826..160H,2012ApJ...746..165H}. The miss of non-mCVs demands reliable explanation from analyzing the properties of these sources. It may indicates that a large number of non-mCVs still awaits discovery since faint class can be always missed in flux-limited surveys.
 
-% \textcolor{red}{this paragraph should find a better place as suggested in the above}
-
 In this work, we have taken full usage of \emph{Chandra} observations for LW. Meanwhile, the methods with more efficiency and the simulation with higher accuracy have been both operated. We explored the X-ray properties of 22 periodic sources (ten of them identified in \cite{2012ApJ...746..165H}). 
 Section \ref{sec:obs} describes the observation we used and the source detection process. Section \ref{sec:methods} gives a brief overview about the main methods for period finding and focuses on the GL method we adopted in this work. Section \ref{sec:timing} is devoted to the operation process of period finding and long timescale variability analysis. Also it addresses the detection completeness obtained from simulation. Section \ref{sec:spectra} presents the spectra analysis for these periodic sources and the estimation of mass of WDs based on the Fe line diagnostic. Section \ref{sec:properties} deliberates over the nature of these periodic sources based on their phase-folded light curve. The comparison with previous work and the X-ray source population in the LW would be summarized in Section \ref{sec:discussion}.
 
@@ -170,7 +168,6 @@ We consider a {\it significant detection} for a given soure in a give ObsID if t
 %For precisely processing, we exclude the contamination of nearby point sources and extended sources from background region by naked eyes. 
 %Then this procedure was only applied for candidate periodic sources (as decribed in sec \ref{sec:results}) due to the manpower limit. 
 We further define for each source an inter-observation {\it variability index}, $\rm VI=S_{max}/S_{min}$, where $\rm S_{max}$ and $\rm S_{min}$ are the maximum and minimum photon fluxes among all the valid detections, respectively. This implicitly requires that the source is significantly detected in at least two observations.
-\\
 
 \begin{figure*}[htbp]
 \centering
@@ -180,25 +177,20 @@ We further define for each source an inter-observation {\it variability index}, 
 \end{figure*}
 
 \section{Period Searching Method}\label{sec:methods}
-In this section, we first provide our motivation of employing the Gregory-Loredo (GL) algorithm, followed by a description of its basic principles (Section~\ref{subsec:GL}). We then elucidate our application of the GL algorithm to the {\it Chandra} data of the LW (Section~\ref{subsec:appli}). This is complemented by a procedure of evaluating the detection (in)completeness (Section~\ref{subsec:simulation}).  
+In this section, we first provide our motivation of employing the Gregory-Loredo (GL) algorithm, followed by a description of its basic principles (Section~\ref{subsec:GL}). We then elucidate our application of the GL algorithm to the {\it Chandra} data of the LW (Section~\ref{subsec:appli}). This is complemented by a set of simulations to evaluate the detection (in)completeness (Section~\ref{subsec:simulation}).  
 
 \subsection{The Gregory-Loredo Algorithm} \label{subsec:GL}
 There exists in the literature a variety of period-searching methods, which can be broadly divided into three categories according to their working principles. 
-\\
-\indent
+
 The most traditional method is based on Fourier transform and its power density spectra, which includes the classical Schuster periodogram \citep{1898TeMag...3...13S}, the Fourier analysis with unequally-spaced data \citep{1975Ap&SS..36..137D}, the correlation-based method \citep{1988ApJ...333..646E}, among others.
-\\
-\indent
+
 Another widely-used method seeks to fit the data with a periodic model in the frequency space, employing statistics such as least-squares residuals to define the likelihood function and then selecting the frequency that maximizes the likelihood. The famous Lomb-Scargle periodogram \citep[hereafter LS]{1976Ap&SS..39..447L,1982ApJ...263..835S} belongs to this category. Note that when adopting trigonometric functions, the least-squares method falls into the Fourier method. Another variant is to replace the least-squares residuals with polynomial fits, such as that used in \citet{1996ApJ...460L.107S}.
-\\
-\indent
+
 The last category is the phase-folding method. For each trial period the time-tagged data is folded as a function of phase, and the best-fit period is found by optimizing the cost function through the frequency space. Cost function are designed  to evaluate how much the phase-folded light curve deviate from constant.
 Methods belonging this category use diverse cost functions. Several widely known examples are the Epoch Folding (EF) algorithm \citep{1983ApJ...266..160L}, the Phase Dispersion Minimization \citep{1978ApJ...224..953S}, the GL algorithm \citep{1992ApJ...398..146G}.
-\\
-\indent
-For X-ray observation, the detection for periodic signals is often applied in sparse astronomical event data. The relatively few detected photons makes it inappropriate for the first two groups of methods since they need photometric data. Though we could choose a length of time bin to covert the event data to photometric data, the small number of  photons makes lower signal-to-noise ratio when using time bins. Fortunately, the phase-folding methods directly manipulate each photons and thus keep the full information from observation. Another characteristic for astronomical observation is the interrupted time series. In frequency space, this kind of window function leads to the heavy contamination for intrinsic data. Still, the phase-folding methods can avoid the effect of non-uniformed data since the process does not contain information in non-observed time. 
-\\
-\indent
+
+In X-ray observations, the detection of periodic signals is often involved with irregularly and sparsely sampled data. The relatively few detected photons makes it inappropriate for the first two groups of methods since they need photometric data. Though we could choose a length of time bin to covert the event data to photometric data, the small number of photons makes lower signal-to-noise ratio when using time bins. Fortunately, the phase-folding methods directly manipulate each photons and thus keep the full information from observation. Another characteristic for astronomical observation is the interrupted time series. In frequency space, this kind of window function leads to the heavy contamination for intrinsic data. Still, the phase-folding methods can avoid the effect of non-uniformed data since the process does not contain information in non-observed time. 
+
 Considering the above, here we use GL method to find periodic signals. GL method applies the Bayesian probability theory to the cost function. We would make a brief overview about Bayes's theorem and the identification of periodic signals in GL method in appendix \ref{GL}. The key of this algorithm is the multiplicity of the binned distribution of events. 
 \begin{equation}\label{multi}
 W_m(\omega, \phi)={{N!}\over{n_1!\; n_2!\; n_3!\cdots {n_m}!}}
@@ -210,7 +202,7 @@ In general, firstly we got the multiplicity for all the set of $(m,\omega, \phi)
 %\section{Period searching procedure}\label{sec:timing}
 \subsection{Application to the LW}\label{subsec:appli}
 Though we did source detection in 2-8 keV band to reduce the contamination from non-CV sources, here we still extracted photons from sources in 1-8 keV band to keep as more as possible source information. 
-Besides, in order to compensate for uneven distribution over the bins, we provide "epoch" for each source. The "epoch" offered the start time and end time of each observations covered the source with at least one counts in source region. See \ref{A17} in appendix for detailed illustration about the use of epoch. 
+Besides, in order to compensate for uneven distribution over the bins, we provide "epoch" for each source. The "epoch" offered the start time and end time of each observations covered the source with at least one counts in source region. See Eqn.~\ref{A17} \textcolor{red}{always add Eqn. when quoting equations} in appendix for detailed illustration about the use of epoch. 
 For the sake of changing aimpoint, we used individual source extract region for different observations. Explicitly, the 90\% ECR aperture  whose radius defined by specific PSF map was applied for counts in that observation. Since the phase-folding method directly manipulated each photons and we could not distinguish background photon from source photon, the local background information were not provided for timing analysis. The combination of each source event list and the corresponding epoch were then employed as the input of GL method. 
 \\
 \indent
@@ -251,7 +243,15 @@ The total span of 13 observation is about three years, i.e., $10^8s$, so the res
 Generally, for each source, we provide the dataset for GL method. Then we got the most periodic signal with its probability in three period ranges. Taking 90\% as threshold to determine the periodicity, finally we choose all the candidate sources with at least one periodic signal.
 
 \subsection{Detection completeness}\label{subsec:simulation}
-In order to examine the detection rate for GL method, we did numerous simulations. The routine follows as described by \citep{1998ApJ...498..666C}. We took sinusoidal variation for a specific counts rate. Since the limit of computational power, the simulation were run at limited numbers of parameters. The parameters includes the modulation period $P$, the original counts rate $\lambda_0$ and the variation amplitude $A_0$. The variation obeys $\lambda (t)=\lambda_0 \times (1+A_{0}sin(\omega t))$. For directly comparing with observation, we replaced $\lambda_0$ with number of counts calculated from exposure time. Since the total exposure time ($T$) is far longer than modulation period ($P$), then the number of counts is approximately equal to $T/\lambda_0$. We casually chose three period in different period ranges, which was 554s, 5540s, 45540s. The values were not chosen by any physical reasons. These three period represent the performance of GL method in three period ranges. 
+In order to examine the detection rate for GL method, we did numerous simulations. The routine follows as described by \citep{1998ApJ...498..666C}. We took sinusoidal variation for a specific counts rate. Since the limit of computational power, the simulation were run at limited numbers of parameters. 
+The intrinsic light curve follows,
+\begin{equation}
+\lambda (t)=\lambda_0 \times [1+A_{0}sin(\omega t)], 
+\label{eqn:sin}
+\end{equation}
+where $\omega = 2{\pi}/P$ is the frequency, $A_0$ the variation amplitude, and $\lambda_0$ the mean count rate which may include contribution from a constant background. 
+For a direct comparison with the observation, we replaced $\lambda_0$ with the total number of counts, $C = \lambda_0 T$, where $T$ is the exposure time of a given observation. This holds since $T$ is typically much longer than the modulation period ($P$). 
+We casually chose three period in different period ranges, which was 554s, 5540s, 45540s. The values were not chosen by any physical reasons. These three period represent the performance of GL method in three period ranges. 
 
 The simulation is operated with counts(cts=$50-500$), amplitudes($A_0$=$0.5-0.9$), period(P=$554s,5540s,45540s$). The top, middle, bottom panel of Figure \ref{fig:detection} show the results of three period respectively. For each set of parameter, the GL method were run on 100 sinusoidal light curves.
 The valid detection of GL method need to constrain the period at 0.1\% accuracy and get periodical  probability beyond 90\%.
