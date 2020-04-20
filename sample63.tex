@@ -197,12 +197,20 @@ W_m(\omega, \phi)={{N!}\over{n_1!\; n_2!\; n_3!\cdots {n_m}!}}
 \end{equation}
 $N$ represents the total number of counts in data, $m$ signifies the number of bins. $n_i(\omega, \phi)$ is the number of events falling into the $i$th of m phase bins by given the frequency $\omega$ and the phase $\phi$, where $\sum\limits_{i=1}^{m}n_i(\omega, \phi)=N$. For the data of N counts, the model defined by $\omega$ and $\phi$, the multiplicity is the number of ways that the distribution could have arisen by chance. The probability of periodic is inversely proportional to the multiplicity. It could be easily proved that when the value of $n_i$ are far apart, the multiplicity is reduced to a lower value. In simpler terms, the more the stepwise model deviate from constant, the higher the signal is periodic. 
 
-In general, firstly we got the multiplicity for all the set of $(m,\omega, \phi)$. secondly, the integration was applied in $(\omega, \phi)$space, producing the so-called "odds ratio" using Bayesian theorem when m took a certain value. Thirdly, the probability of whether the dataset is periodic was obtained by the sum of normalized odds ratio. Finally, comparing all the odds ratio integrated at only $\phi$ space, the $\omega$ with the highest odds ratio, corresponding the period of signal.
+In general, the GL method follows these steps:
+
+(1) Compute the multiplicity for all the set of $(m,\omega, \phi)$. (Eqn.~\ref{multi})
+
+(2) Apply the integration in $(\omega, \phi)$space, and produce the so-called "odds ratio" using Bayesian theorem when $m$ took a certain value. (Eqn.~\ref{A16})
+
+(3) Add up the normalized odds ratio and the probability of whether the dataset is periodic would be obtained. (Eqn.~\ref{A20})
+
+(4) Compare all the odds ratio integrated at only $\phi$ space, the $\omega$ with the highest odds ratio corresponds the period of signal. (Eqn.~\ref{A21})
 
 %\section{Period searching procedure}\label{sec:timing}
 \subsection{Application to the LW}\label{subsec:appli}
 Though we did source detection in 2-8 keV band to reduce the contamination from non-CV sources, here we still extracted photons from sources in 1-8 keV band to keep as more as possible source information. 
-Besides, in order to compensate for uneven distribution over the bins, we provide "epoch" for each source. The "epoch" offered the start time and end time of each observations covered the source with at least one counts in source region. See Eqn.~\ref{A17} \textcolor{red}{always add Eqn. when quoting equations} in appendix for detailed illustration about the use of epoch. 
+Besides, in order to compensate for uneven distribution over the bins, we provide "epoch" for each source. The "epoch" offered the start time and end time of each observations covered the source with at least one counts in source region. See Eqn.~\ref{A17} in appendix for detailed illustration about the use of epoch. 
 For the sake of changing aimpoint, we used individual source extract region for different observations. Explicitly, the 90\% ECR aperture  whose radius defined by specific PSF map was applied for counts in that observation. Since the phase-folding method directly manipulated each photons and we could not distinguish background photon from source photon, the local background information were not provided for timing analysis. The combination of each source event list and the corresponding epoch were then employed as the input of GL method. 
 \\
 \indent
@@ -742,7 +750,7 @@ p(D|M_1)={{{\Delta t}^N N!\gamma(N+1,A_{max})T}\over {A_{max}N!T^{N+1}}}
 \end{equation}
 
 Substituting \ref{12}, \ref{13}, \ref{5.27}, \ref{15} into \ref{11}, the odds ratio could be written as follows, which is the same as equation 5.28 in GL method:
-\begin{equation}\label{16}
+\begin{equation}\label{A16}
 O_{m1}={1\over{2\pi \nu \ln(\omega_{hi}/\omega_{lo})}} {{N+m-1}	\choose N}^{-1}\times {\int_{w_{lo}}^{w_{hi}}}{{d\omega}\over{\omega}}\times {\int_0^{2\pi}d\phi{m^N\over W_m(\omega,\phi)}} 
 \end{equation}
 
@@ -755,17 +763,17 @@ s_j(\omega,\phi)={{\tau_{j}(\omega,\phi)}\over {T/m}}
 \end{equation}
 \indent
 Then the odds ratio should be modified as:
-\begin{equation}\label{19}
+\begin{equation}\label{A19}
 O_{m1}={1\over{2\pi \nu \ln(\omega_{hi}/\omega_{lo})}} {{N+m-1}	\choose N}^{-1}\times {\int_{w_{lo}}^{w_{hi}}}{{d\omega}\over{\omega}}\times {\int_0^{2\pi}d\phi{S(\omega,\phi)m^N\over W_m(\omega,\phi)}} 
 \end{equation}
 
 Ultimately, the probability of whether the dataset is periodic is:
-\begin{equation}\label{20}
+\begin{equation}\label{A20}
 p(periodic)={{\sum_{m=2}^{m_{max}} O_{m1}}\over {1+\sum_{m=2}^{m_{max}} O_{m1}}}
 \end{equation}
 
 The posterior probability of the frequency indicates the period of the signal:
-\begin{equation}\label{19}
+\begin{equation}\label{A21}
 O_{m1}(\omega)={1\over{2\pi \nu}} {{N+m-1}	\choose N}^{-1} \times {\int_0^{2\pi}d\phi{S(\omega,\phi)m^N\over W_m(\omega,\phi)}} 
 \end{equation}
 
