@@ -62,7 +62,7 @@
 \begin{abstract}
 We present the discovery of 22 X-ray periodic sources in the Limiting Window (LW), a low-extinction region in the Galactic bulge, locating 80' south of the Galactic center. Their luminosities range(${\rm 10^{31}-10^{33} ~erg ~ s^{-1}}$) and period distribution(mostly between 1 to 3 hour), indicate they are cataclysmic variables (CVs). Most of them are polars with relatively harder spectrum, suggesting an unusual sub-class of mCVs.
 The brighter sources (6 out of 22 with L>$\rm 10^{32} ~erg~s^{-1}$) in this sample are more likely IPs, with mean $M_{WD}$ about 0.8 $M_\odot$.
-We also proved that the Gregory-Loredo (GL) method used in this work has better sensitivity and data usage compared to the Lomb-Scargle (LS) method. In combination with the simulation and the geometry of accretion in CVs, we constrain the proportion of polars to X-ray sources in LW about 16\%, and the fraction of DNe is about 67\%, though with more uncertainty. Still, this discovery confirms the sub-type of unusual mCVs and provides a practical way to study the population about X-ray sources based on periodic modulation.
+We also proved that the Gregory-Loredo (GL) method used in this work has better sensitivity and data usage compared to the Lomb-Scargle (LS) method. In combination with the simulation and the geometry of accretion in CVs, we constrain the proportion of polars to X-ray sources in LW about 14\%, and the fraction of DNe is about 45\%, though with more uncertainty. Still, this discovery confirms the sub-type of unusual mCVs and provides a practical way to study the population about X-ray sources based on periodic modulation.
 \end{abstract}
 
 %% Keywords should appear after the \end{abstract} command. 
@@ -501,14 +501,15 @@ The improvement on detecting efficiency and data usage brought more periodic sig
 \end{figure}
 
 \subsection{The estimation for X-ray source population}
-Firstly, we assumed that the fraction of polars in the total sample of 847 sources is $\alpha$. The sinusoidal variation happens in "two-pole" situation, which takes $90^\circ$ in total $360^\circ$. Then we can set 25\% as the upper limit for polars with sinusoidal variation intrinsically. We assumed the even distribution for amplitude from 0.5 to 0.9 and took the simulation results for P=5540s and P=45540s as the detection rate for period under(60\% of the total number) and beyond the period gap(40\% of the total number). The value of 60\% and 40\% are estimated from Figure \ref{fig:N_P}. Then we set width=100 for our binning of counts, from 75 to 3575, which consist nearly all detected sources. The predicted number of periodic sources which "should" be detected in each bin is calculated by:
+Firstly, we assumed that the fraction of polars in the total sample of 667 sources is $\alpha$. The sinusoidal variation happens in "two-pole" situation, which takes $90^\circ$ in total $360^\circ$. Then we can set 25\% as the upper limit for polars with sinusoidal variation intrinsically. We assumed the even distribution for amplitude from 0.5 to 0.9 and took the simulation results for P=5540s and P=45540s as the detection rate for period under(60\% of the total number) and beyond the period gap(40\% of the total number). The value of 60\% and 40\% are estimated from Figure \ref{fig:N_P}. Then we set width=100 for our binning of counts, from 75 to 3575, which consist nearly all detected sources. The choice of value balance the number of counts taken from observation and simulation. 
+ The predicted number of periodic sources which "should" be detected in each bin is calculated by:
 \begin{equation}
-Np_{i}=N_i\times DR \times 25\% \times 847 \times \alpha	
+Np_{i}=N_i\times DR \times 25\% \times 667 \times \alpha	
 \end{equation}
-$N_i$ is the product of number of sources detected in the bin. DR denotes the detection rate weighted from simulation. Then we sum all $Np_{i}$ together and force it equals to 20,  getting $\alpha$ about 16\%. The comparison between $Np_{i}$ and the real detected 20 periodic sources(two determined IPs excluded) are plotted in Figure \ref{fig:NP_sim}. The perfect agreement between their population proves the validity of estimation.
+$N_i$ is the product of number of sources detected in the bin. DR denotes the detection rate weighted from simulation. Then we sum all $Np_{i}$ together and force it equals to 20,  getting $\alpha$ about 14\%. The comparison between $Np_{i}$ and the real detected 20 periodic sources(two determined IPs excluded) are plotted in Figure \ref{fig:NP_sim}. The perfect agreement between their population proves the validity of estimation.
 
 Since the real luminosity function should be gentle than that of  total sample, which means there could be more polars at the bright band, then it demanding lower numbers of polar to balance the high detection rate for bright sources. 
-In general, the 16\% should be treated as the upper limit for polars, especially when we considered all the 20 sources(already excluding the two IPs) are polars. 
+In general, the 14\% should be treated as the upper limit for polars, especially when we considered all the 20 sources(already excluding the two IPs) are polars. 
 
 While for DNe, we are constrained by lack of reliable X-ray luminosity function(XLF). We have already set the three as the upper limit of DNe. The steeper XLF for DNe than the XLF for total sample would only contribute the lower limit for their proportion. This conflict increases the  uncertainty of estimation. Here we still present the estimation for fraction of DNe.
 Intrinsically, the eclipse of white dwarf depends on the inclination angle, radius of companion star and orbit. If we set $\beta$ as probability of eclipsing, $i$ as inclination, $R_1$,$R_2$,$R_{orb}$ as radius of WD, companion star and orbit respectively. Then the $\beta$ need to fullfill:
@@ -525,7 +526,7 @@ We took parameters from simulation operated by \citep{2011ApJS..194...28K}, in w
 We utilized the simulation results of 5258s and 15258s as the detection rate for period under(75\% of the total number) and beyond the period gap(25\% of the total number). The fraction was taken from the DNe distribution in solar neighborhood. Besides, EP was chosen as 0.18 and 0.20 for this two types.
 Similarly, the predicted number of periodic non-mCVs which "should" be detected in each counts bin is:
 \begin{equation}
-Np_{i}=N_i\times DR \times EP \times 847 \times \alpha	
+Np_{i}=N_i\times DR \times EP \times 667 \times \alpha	
 \end{equation}
 Since the sum of $Np_{i}$ was assigned as three, the $\alpha$ would be around 0.67 if we set $\rm 10^{32}~erg~s^{-1}$ (roughly corresponding 675 counts) as the upper limit of luminosity for DNe. The rationality of the limit has been proved by the DNe sample from solar neighborhood in \citep{2016ApJ...818..136X}, based on Suzaku observation. The uncertainty of this fraction comes from our limited acquaintance about XLF for DNe, and the subjective diagnostic for the phase-folded light curve. 
 \section{Summary}\label{sec:summary}
@@ -534,7 +535,7 @@ Since the sum of $Np_{i}$ was assigned as three, the $\alpha$ would be around 0.
 
 2.  We estimate the mass of WD from two sources with great identification for Fe XXVI and Fe XXV emission lines, i.e. 0.8 $M_\odot$ for \#21(\#22), and 0.5(1.0) $M_\odot$ for \#23 if being an IP(DN). 
 
-3. We provide well-constrained fraction of polars in the whole sample, i.e, 16\% as the upper limit. The estimation on fraction of non-mCVs is about 67\% while the certainty is restricted by limited appreciation about their XLF. Combined with the period distribution, we conclude that the periodic sources are mainly polars with relatively harder spectra, especially in the luminosity range that lower than $\rm 10^{32}~erg~s^{-1}$. Besides, the H sources (L>$\rm 10^{32}~erg~s^{-1}$), whose emission is mostly contributed by IPs, indicate  $M_{WD} \sim 0.8 M_\odot$, consistent with the previous result $0.8\pm 0.07 M_\odot$ in \citep{2018ApJ...853..182Y}.
+3. We provide well-constrained fraction of polars in the whole sample, i.e, 14\% as the upper limit. The estimation on fraction of non-mCVs is about 45\% while the certainty is restricted by limited appreciation about their XLF. Combined with the period distribution, we conclude that the periodic sources are mainly polars with relatively harder spectra, especially in the luminosity range that lower than $\rm 10^{32}~erg~s^{-1}$. Besides, the H sources (L>$\rm 10^{32}~erg~s^{-1}$), whose emission is mostly contributed by IPs, indicate  $M_{WD} \sim 0.8 M_\odot$, consistent with the previous result $0.8\pm 0.07 M_\odot$ in \citep{2018ApJ...853..182Y}.
 
 4. The lower luminosity and narrow eclipsing model for orbital modulation reduced the detection rate simultaneously for periodicity. That may explain why we had no trace on non-mCVs in GCR in earlier period searching work.
 
