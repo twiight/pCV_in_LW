@@ -189,7 +189,10 @@ Another widely-used method seeks to fit the data with a periodic model in the fr
 The last category is the phase-folding method. For each trial period the time-tagged data is folded as a function of phase, and the best-fit period is found by optimizing the cost function through the frequency space. Cost function are designed  to evaluate how much the phase-folded light curve deviate from constant.
 Methods belonging this category use diverse cost functions. Several widely known examples are the Epoch Folding (EF) algorithm \citep{1983ApJ...266..160L}, the Phase Dispersion Minimization \citep{1978ApJ...224..953S}, the GL algorithm \citep{1992ApJ...398..146G}.
 
-In X-ray observations, the detection of periodic signals is often involved with irregularly and sparsely sampled data. The relatively few detected photons makes it inappropriate for the first two groups of methods since they need photometric data. Though we could choose a length of time bin to covert the event data to photometric data, the small number of photons makes lower signal-to-noise ratio when using time bins. Fortunately, the phase-folding methods directly manipulate each photons and thus keep the full information from observation. Another characteristic for astronomical observation is the interrupted time series. In frequency space, this kind of window function leads to the heavy contamination for intrinsic data. Still, the phase-folding methods can avoid the effect of non-uniformed data since the process does not contain information in non-observed time. 
+In X-ray observations, the detection of periodic signals is often involved with irregularly and sparsely sampled data. 
+The small number of photons often makes lower signal-to-noise ratio when using time bins to get photometric data.
+The relatively few detected photons makes it more appropriate forthe last group of methods since they handle event data without binning. 
+Another characteristic for astronomical observation is the interrupted time series. In frequency space, this kind of window function leads to the heavy contamination for intrinsic data. Still, the phase-folding methods can avoid the effect of non-uniformed data since the process does not contain information in non-observed time. 
 
 Considering the above, here we use GL method to find periodic signals. GL method applies the Bayesian probability theory to the cost function. We would make a brief overview about Bayes's theorem and the identification of periodic signals in GL method in appendix \ref{GL}. The key of this algorithm is the multiplicity of the binned distribution of events. 
 \begin{equation}\label{multi}
@@ -212,13 +215,10 @@ In general, the GL method follows these steps:
 Though we did source detection in 2-8 keV band to reduce the contamination from non-CV sources, here we still extracted photons from sources in 1-8 keV band to keep as more as possible source information. 
 Besides, in order to compensate for uneven distribution over the bins, we provide "epoch" for each source. The "epoch" offered the start time and end time of each observations covered the source with at least one counts in source region. See Eqn.~\ref{A17} in appendix for detailed illustration about the use of epoch. 
 For the sake of changing aimpoint, we used individual source extract region for different observations. Explicitly, the 90\% ECR aperture  whose radius defined by specific PSF map was applied for counts in that observation. Since the phase-folding method directly manipulated each photons and we could not distinguish background photon from source photon, the local background information were not provided for timing analysis. The combination of each source event list and the corresponding epoch were then employed as the input of GL method. 
-\\
-\indent
-As mentioned in section \ref{subsec:GL}, the GL method fold the dataset at trial period or frequency. Then the resolution of frequency must be balanced between computational power and  accuracy. Here we generate the frequency resolution depended on the data timescale.
-\\
-\indent
-For the data span in timescale T, the arrival time of photon $t_i$, the changing angular frequency influence the phase of photon more as $i$ grows. The most vulnerable photon is the last photon arrived, whose arrival time is T, and the change of phase is 
 
+As mentioned in section \ref{subsec:GL}, the GL method folds the dataset at trial period or frequency. Then the resolution of frequency must be balanced between computational power and  accuracy. Here we generate the frequency resolution depended on the data timescale.
+
+For the data span in timescale T, the arrival time of photon $t_i$, the changing angular frequency influence the phase of photon more as $i$ grows. The most vulnerable photon is the last photon arrived, whose arrival time is T, and the change of phase is
 \begin{subequations}\label{fi}
 \begin{equation}
 	d\phi_{N}=\phi_{N}^{'}-\phi_{N}
@@ -267,8 +267,7 @@ Specifically, we adopt total counts $C$=50, 100, 200, 300, 400 and 500, amplitud
 The chosen periods are representative of the period ranges considered in Section~\ref{subsec:appli}.
 The adopted total counts also well cover the range of observed counts from the LW sources.
 
-We thus simulate 100 light curves for each combination of parameters, taking into account Poisson errors and the exact exposures of the 13 ACIS-I observations. {\bf [is this the case?]}
-We then search for a period from the simulated light curve using the GL algorithm in the same manner as in Section~\ref{subsec:appli}.
+We thus simulate 100 light curves for each combination of parameters, taking into account Poisson errors and the exact exposures of the 13 ACIS-I observations. We then search for a period from the simulated light curve using the GL algorithm in the same manner as in Section~\ref{subsec:appli}.
 The resultant period is considered a valid detection if it has a detection probability greater than 90\% and its value is consistent with the input period to within 0.1\%. 
 The detection rate for a given combination of parameters is taken to be the fraction of 100 light curves with a valid detection, 
 
@@ -325,30 +324,6 @@ From period searching by GL method and taking 90\% as threshold, we got 48 perio
 %{\bf [we don't have to discard foreground sources at this point]}
 
 After these limitations were applied, we got 24 valid detection of periodic signal in 22 sources. Two of these sources showed two period in different period ranges.
-\subsection{Treatment of harmonics}\label{harmonics}
-
-To determine the intrinsic period, whether it's rotation period or orbital period, from primary period and harmonics, we should not focus on data and the significance of signals. In that the intensities of signals could not reflect the authenticity of the signal precisely. For the sake of  identification, the physical mechanism of period in CVs must be introduced. 
-
-Here we take the 6th signal as an illustration, the phase-folded light curve of primary period and second harmonic show classic  single-peak shape and double-peak shape, see the left two panels in Figure \ref{fig:6thfig}. For comparison, we also present the phase-folded light curve of J1817-2508 based on XMM-Newton observations (obsID=0601270301).
-
- The J1817-2508, which was also called IGR J18173-2509, has been determined with pulsation at 830.70s from Swift-XRT detection. Then the signal of 1660s has also been detected from Chandra observation \citep{2009ATel.2354....1N} and the optical period of 1690s \citep{2012A&A...542A..22B}. All the above strongly suggests that the true spin period is about 1660s, twice the first detected X-ray period, even though the two peaks in modulation are quite similar, as shown in the lower right panel in Figure \ref{fig:6thfig}.
- 
- The properties of J1817-2508 indicates that phase-folded light curve could be extremely deceptive under the circumstances that sources with symmetric dipole structure. We could not precisely determine the true rotation period without optical observations. However, the physical origins of periodic signals may provide additional constrains on the judgement. The double-peak shape only happens in IP with accretion column model. The two poles where accretion region lied on, would be the brightest. When we look at them at a specific angle, the two poles alternatively flitting across the face of WDs, and then produce the double-peaked pulsation. In this kind of situation, the modulation period must be the rotation period of WDs, mostly under one hour. While the second harmonics of our sources, are mostly beyond 3 hours. It would be a risky assumption if these harmonics served as spin period. On the other hand, despite the WDs in polars may have such long rotation period from synchronization effect, their accretion stream always falls on the single pole, emitting most of the soft X-ray radiation. Then the double-peaked pulsation are almost impossible. 
- 
- In conclusion, according to the length of period in our sources, we took the single-peaked signal, normally the shortest period, as the real orbital period. The double-peaked shape in harmonics are treated as spurious signal. 
-
-
-\begin{figure*}[htbp]
-\gridline{
-\fig{./figure/LW/pfold_lc_20.eps}{0.45\textwidth}{}
-\fig{./figure/CV/pfold_lc_J1817_2508_spin_half.eps}{0.45\textwidth}{}
-}
-\gridline{
-\fig{./figure/LW/pfold_lc_20_second.eps}{0.45\textwidth}{}
-\fig{./figure/CV/pfold_lc_J1817_2508_spin.eps}{0.45\textwidth}{}
-}
-\caption{The top left and bottom left panel show the folded light curve of LW 6, at true period and second harmonics, respectively. The top right and bottom right panel display the folded light curve of J1817-2508. While for this source, the double-peaked shape (bottom right) at 1660s are the real signal of rotation. \label{fig:6thfig}}
-\end{figure*}
 
 \begin{figure*}[htbp]
 \centering
@@ -363,8 +338,7 @@ For left panel, though the GL method could not distinguish background photons, w
 Additionally, since the bin size in phase-folded light curve has no effect on the shape, we chose the bin size between 20 to 50, to get the most distinct display. 
 For middle panel, the valid detection (defined in \ref{longT}) are plotted with dots plus error range. While the non-valid detection are shown in arrows, providing only the upper limits. Meanwhile, the x-axis in right panel were plotted in discontinuous style for better demonstration effect, since the short interval over the last eight observations. 
 For right panel, the spectra illustrated here were fitted in the range of 1-8 keV, consistent with the timing analysis. 
-\\
-\indent
+
 Besides, we also did 100 times of simulations for each signal. We had to use sinusoidal variations for simulating process though many of them may deviate much from real shape. The counts rate and period can be directly attained from data, while the amplitude is hard to determine since the deviation. In \citet{2012ApJ...746..165H}, they defined $A_{M}={1-R_{min}}/R_{max}$, and $A_{M}=2A_0/{1+A_0}$, where $R_{min}(R_{max})$ is the minimum (maximum) count rate of the folded light curve. 
 Though the $A_{M}$ depends on the bin size of phase-folded light curve, we still prefer it rather than $A_{rms}$ to get the amplitude since the deviation between sinusoidal variation and real shape sometimes made $A_{0}$ exceeds one when it was calculated from $A_{rms}$. The definition of $A_{rms}$ and the relation between 
 $A_{rms}$ and $A_0$, which were taken by \cite{2012ApJ...746..165H}, are described below.
@@ -478,11 +452,9 @@ F2 & 267.90974 &	-29.71112 & 42219.03 &-& 1039 &-&-&-  &-&-&-
 
 \section{X-ray spectral analysis}\label{sec:spectra}
 For all candidate periodic sources, we employed the same region as described in section \ref{longT} and combined the individual spectra together by using the CIAO tool \emph {specextract}. Then we made the spectra analysis in XSPEC v12.9.1 over the range of 0.5-8 keV. The adaptive binning had been conducted before the fitting with signal-to-noise ratio of 2. The reason we present the fitting results of 0.5-8 keV here is to constrain the absorption. Notice that the choice of energy range is not consistent with the illustration of spectra in Figure \ref{fig:Figure_p}, even though it has little impact on exhibition. 
-\\
-\indent
+
 We modeled the spectra by using a bremsstrahlung continuum plus three Gaussian lines centered at 6.40, 6.68 ,and 6.97 keV respectively  \citep{2018ApJS..235...26Z,2019ApJ...882..164X}. And all these model components are multiplied by an absorption component(using the model \emph {phabs} in XSPEC). The spectral analysis results are shown in Table \ref{tab:spec}.
-\\
-\indent
+
 The plasma temperature could not be well constrained caused by the intrinsic hard spectrum and the bad sensitivity of \emph{Chandra} above 8 keV. Hence we fixed $T_b$ at 40 keV under the not-constrained situation, which is the typical value of IPs \citep{2016ApJ...826..160H}.
 Besides, we provided the information of Fe K emission line, which had been proved as the great probe of the mass of white dwarfs in CVs \citep{2016ApJ...818..136X}. The flux ratio of Fe XXVI to Fe XXV emission lines (hereafter $I_{7.0}/I_{6.7}$) could be interrelated to the $M_{WD}$ by uniting the $I_{7.0}/I_{6.7}$-$T_{max}$ and $T_{max}-M_{WD}$ relations \citep{2019ApJ...882..164X}. Due to the low metallicity in LW field, most of sources in our table have weak emission of iron line. We employed the XSPEC tool \emph{multifake} to derive the confidence range of $I_{7.0}/I_{6.7}$ and $I_{6.4}/I_{6.7}$. Then we excluded the source whose 68.3\% confidence range for the intensities of three iron lines are all below zero. After the filtering process, we only got 2 sources with valid detection of at least one iron lines. The value of flux ratios are presented together with their 68.3\% confidence range (see column (4) and (5) in Table \ref{tab:spec}). Referring to the $I_{7.0}/I_{6.7}$-$M_{WD}$ relation in \citet{2019ApJ...882..164X}, the WD mass of LW 21(or LW 22) and LW 23 would be around 0.8 and 0.5 $M_\odot$ if they are IPs, or 1.2 and 1.0 $M_\odot$ if DNe, respectively.
 
@@ -739,7 +711,7 @@ p(M_1|I)={1\over 2}
 p(M_m|I)={1\over {2\nu}}	, \quad \nu =m_{max}-1
 \end{equation}
 
-Since the essence of the algorithm is not our subject, we directly introduce the equation 5.27 in GL method as follows. It must be emphasized that this equation worked for the situation when the period and phase are both unknown. 
+Since the essence of the algorithm is not our subject, we directly introduce the equation 5.27 in \citep{1992ApJ...398..146G} as follows. It must be emphasized that this equation worked for the situation when the period and phase are both unknown. 
 \begin{equation}\label{5.27}
 p(D|M_m)={{{\Delta t}^N (m-1)! N! \gamma(N+1,A_{max})T}\over{2\pi A_{max} (N+m-1)!T^{N+1} \ln(\omega_{hi}/\omega_{lo})}}\times {\int_{w_{lo}}^{w_{hi}}}{{d\omega}\over{\omega}}\times {\int_0^{2\pi}d\phi{m^N\over W_m(\omega,\phi)}}	
 \end{equation}
@@ -778,6 +750,35 @@ O_{m1}(\omega)={1\over{2\pi \nu}} {{N+m-1}	\choose N}^{-1} \times {\int_0^{2\pi}
 \end{equation}
 
 The period locates at $P=2\pi /\omega $ when $O_{m1}(\omega)$ takes the highest value.
+
+
+\section{Treatment of harmonics}\label{harmonics}
+
+\begin{figure*}[htbp]
+\gridline{
+\fig{./figure/LW/pfold_lc_20.eps}{0.45\textwidth}{}
+\fig{./figure/CV/pfold_lc_J1817_2508_spin_half.eps}{0.45\textwidth}{}
+}
+\gridline{
+\fig{./figure/LW/pfold_lc_20_second.eps}{0.45\textwidth}{}
+\fig{./figure/CV/pfold_lc_J1817_2508_spin.eps}{0.45\textwidth}{}
+}
+\caption{The top left and bottom left panel show the folded light curve of LW 6, at true period and second harmonics, respectively. The top right and bottom right panel display the folded light curve of J1817-2508. While for this source, the double-peaked shape (bottom right) at 1660s are the real signal of rotation. \label{fig:6thfig}}
+\end{figure*}
+
+To determine the intrinsic period, whether it's rotation period or orbital period, from primary period and harmonics, we should not focus on data and the significance of signals. In that the intensities of signals could not reflect the authenticity of the signal precisely. For the sake of  identification, the physical mechanism of period in CVs must be introduced. 
+
+Here we take the 6th signal as an illustration, the phase-folded light curve of primary period and second harmonic show classic  single-peak shape and double-peak shape, see the left two panels in Figure \ref{fig:6thfig}. For comparison, we also present the phase-folded light curve of J1817-2508 based on XMM-Newton observations (obsID=0601270301).
+We processed the EPIC PN and MOS data with the standard tool \emph{emchain} and \emph{epchain} in SAS v18.0.0. Then we extract the 0.2-10 keV light curve and folded it from PN data for it has the largest effective area.
+
+ The J1817-2508, which was also called IGR J18173-2509, has been determined with pulsation at 830.70s from Swift-XRT detection. Then the signal of 1660s has also been detected from Chandra observation \citep{2009ATel.2354....1N} and the optical period of 1690s \citep{2012A&A...542A..22B}. All the above strongly suggests that the true spin period is about 1660s, twice the first detected X-ray period, even though the two peaks in modulation are quite similar, as shown in the lower right panel in Figure \ref{fig:6thfig}.
+ 
+ The properties of J1817-2508 indicates that phase-folded light curve could be extremely deceptive under the circumstances that sources with symmetric dipole structure. We could not precisely determine the true rotation period without optical observations. However, the physical origins of periodic signals may provide additional constrains on the judgement. The double-peak shape only happens in IP with accretion column model. The two poles where accretion region lied on, would be the brightest. When we look at them at a specific angle, the two poles alternatively flitting across the face of WDs, and then produce the double-peaked pulsation. In this kind of situation, the modulation period must be the rotation period of WDs, mostly under one hour. While the second harmonics of our sources, are mostly beyond 3 hours. It would be a risky assumption if these harmonics served as spin period. On the other hand, despite the WDs in polars may have such long rotation period from synchronization effect, their accretion stream always falls on the single pole, emitting most of the soft X-ray radiation. Then the double-peaked pulsation are almost impossible. 
+ 
+ In conclusion, according to the length of period in our sources, we took the single-peaked signal, normally the shortest period, as the real orbital period. The double-peaked shape in harmonics are treated as spurious signal. 
+
+
+
 
 \section{Figures for periodic CVs }
 \begin{figure*}[htbp]
