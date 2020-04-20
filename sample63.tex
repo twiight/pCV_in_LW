@@ -282,9 +282,9 @@ The piecewise function, which mimics an eclipse against an otherwise constant fl
 f\lambda_0 & \text{$\phi(t) \in[(1-w)\pi,(1+w)\pi]$},
 \end{cases}	
 \end{equation}
-where $w$ accounts for the eclipsing width (duration) in phase space, and $f$ characterizes the fractional depth of the eclipse, with $0\leq f \leq 1$. Here the eclipse is assumed to occur around $\phi = \pi$. 
+where $w$ accounts for the eclipsing width (duration) in phase space, and $f$ characterizes the fractional depth of the eclipse, with ($0\leq f \leq 1$; $f = 0$ corresponds to total eclipse). Here the eclipse is assumed to occur around $\phi = \pi$. 
 Again, $\lambda_0$ can be related to the total counts as $C=(1-fw)\lambda_0T$.
-We set $f=0.1$ and $w=0.1$ in our simulations, which are typical of eclipsing CVs, since the radius ratio of WD, companion star and orbit are about 1:10:50. {\bf [$f$ might be too small. better try more values]}
+We set $f=0.1$ and $w=0.1$ in our simulations, which are typical of eclipsing CVs, since the radius ratio of WD, companion star and orbit are about 1:10:50. {\bf [try $f$ =0.2, 0.5?$f$ might be too small. better try more values]}
 We test two values for the period, $P$=5258 and 15258 sec. {\bf [some justifications for these values are warranted]} 
 Then the simulation were run 100 times at each set of parameter. Results of detection rate(also taking 90\% as threshold) is shown is Figure \ref{fig:eclipse}. It is noteworthy that the efficiency soars to 1 when the number of counts goes up. And a marked rise appears with the growth of period.
  
@@ -303,19 +303,18 @@ Then the simulation were run 100 times at each set of parameter. Results of dete
 
 \section{Period Searching Results}\label{sec:results}
 \subsection{Filtering detections}
-From period searching by GL method and taking 90\% as threshold, we got 73 periodic signals in three period ranges. The spurious detections are severe, resulted by many reasons.
+We took C=100 as the search limit based on the simulation results. The sources whose number of counts are lower than 100 were ignored. The choice for this limit has been explained explicitly in section \ref{subsec:simulation}. Then we got 667 sources with C>100 as the input of GL method.
+
+From period searching by GL method and taking 90\% as threshold, we got 48 periodic signals in three period ranges. The spurious detections are severe, resulted by many reasons.
 
 (1) There are repetitious detection for the same intrinsic signal caused by second and third harmonics. Luckily, it's easy to identified by phase-folded light curves If we assume that it's a single-peak structure. We had to assume that there was no half harmonics and took the lowest period signal as the real period. Discussion about harmonics would be detailed below in section \ref{harmonics}. 
 
 (2) The Chandra satellite was designed with dithering to distribute photons over more CCD pixels and avoid pile-up effect. The dither period is about 706.96s in pitch and 999.96s in yaw. All signals around these two and their harmonics were excluded, which happened most in the first period range.
 
-(3) The strong outburst in long timescales would confuse the GL method since this algorithm directly analyzed the phase folded light curve. If there are too many photons in one of the observations, some phase bins would show unusual excess at long period. Then the method may "think" there is a period of the source especially in the third period range. Therefore, the periodic sources with VI>10 were excluded. {\bf [simply excluding such sources may not be the best choice. better say their periods are reexamined by excluding the outburst epoch or by including the outburst epoch only]}
+(3) The strong outburst in long timescales would confuse the GL method since this algorithm directly analyzed the phase folded light curve. If there are too many photons in one of the observations, some phase bins would show unusual excess at long period. Then the method may "think" there is a period of the source especially in the third period range. We did period searching for the two sources (VI>10)  on/off outburst respectively. The periodic signal have not reborn. Therefore, these two  signals were excluded. 
 
-(4) The foreground sources is not of our interest. Meanwhile, the uncertainty of their distances resulted the unknown luminosity, which increased the confusing part of their nature. We applied the spectral fitting results to distinguish them from galactic bulge sources. If the absorption column density (hereafter $N_{H}$) is lower than $5 \times 10^{21} cm^{-2}$, it would be taken as foreground source. Though they are not spurious but valid detection, we only present their period and coordinates in Table \ref{tab:src} labeled by F1 and F2, without further discussion.
-{\bf [we don't have to discard foreground sources at this point]}
-
-(5) We took N=100 as the search limit based on the simulation results. The sources whose number of counts are lower than 100 were ignored. The choice for this limit has been explained explicitly in section \ref{subsec:simulation}. The choice served as compensation for the third filtering. Due to the nearly no valid detection for faint sources, we were incapable to give VI for them following the routine of section \ref{longT}. Although we could not obtain the false-detection rate (i.e. reliability) from simulation cause of no unified long timescale variability model. It was still trustworthy to assume the higher false-detection rate for fainter sources. Collectively, we exclude the detection signal for sources under that limit. 
-{\bf [I don't fully understand these statements. The question is how much low-count sources are found to have a tentative period]}
+%(4) The foreground sources is not of our interest. Meanwhile, the uncertainty of their distances resulted the unknown luminosity, which increased the confusing part of their nature. We applied the spectral fitting results to distinguish them from galactic bulge sources. If the absorption column density (hereafter $N_{H}$) is lower than $5 \times 10^{21} cm^{-2}$, it would be taken as foreground source. Though they are not spurious but valid detection, we only present their period and coordinates in Table \ref{tab:src} labeled by F1 and F2, without further discussion.
+%{\bf [we don't have to discard foreground sources at this point]}
 
 After these limitations were applied, we got 24 valid detection of periodic signal in 22 sources. Two of these sources showed two period in different period ranges.
 \subsection{Treatment of harmonics}\label{harmonics}
