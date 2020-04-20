@@ -259,7 +259,7 @@ Specifically, we adopt total counts $C$=50, 100, 200, 300, 400 and 500, amplitud
 The chosen periods are representative of the period ranges considered in Section~\ref{subsec:appli}.
 The adopted total counts also well cover the range of observed counts from the LW sources.
 
-We thus simulate 100 light curves for each combination of parameters, taking into account Poisson errors and the exact exposures of the 13 ACIS-I observations. {\bf [is this the case?]}
+We thus simulate 100 light curves for each combination of parameters, taking into account Poisson errors and the exact exposures of the 13 ACIS-I observations. 
 We then search for a period from the simulated light curve using the GL algorithm in the same manner as in Section~\ref{subsec:appli}.
 The resultant period is considered a valid detection if it has a detection probability greater than 90\% and its value is consistent with the input period to within 0.1\%. 
 The detection rate for a given combination of parameters is taken to be the fraction of 100 light curves with a valid detection, 
@@ -282,9 +282,9 @@ The piecewise function, which mimics an eclipse against an otherwise constant fl
 f\lambda_0 & \text{$\phi(t) \in[(1-w)\pi,(1+w)\pi]$},
 \end{cases}	
 \end{equation}
-where $w$ accounts for the eclipsing width (duration) in phase space, and $f$ characterizes the fractional depth of the eclipse, with $0\leq f \leq 1$. Here the eclipse is assumed to occur around $\phi = \pi$. 
+where $w$ accounts for the eclipsing width (duration) in phase space, and $f$ characterizes the fractional depth of the eclipse ($0\leq f \leq 1$; $f = 0$ corresponds to total eclipse). Here the eclipse is assumed to occur around $\phi = \pi$. 
 Again, $\lambda_0$ can be related to the total counts as $C=(1-fw)\lambda_0T$.
-We set $f=0.1$ and $w=0.1$ in our simulations, which are typical of eclipsing CVs, since the radius ratio of WD, companion star and orbit are about 1:10:50. {\bf [$f$ might be too small. better try more values]}
+We set $f=0.1$ and $w=0.1$ in our simulations, which are typical of eclipsing CVs, since the radius ratio of WD, companion star and orbit are about 1:10:50. {\bf [try $f$ =0.2, 0.5?]}
 We test two values for the period, $P$=5258 and 15258 sec. {\bf [some justifications for these values are warranted]} 
 Then the simulation were run 100 times at each set of parameter. Results of detection rate(also taking 90\% as threshold) is shown is Figure \ref{fig:eclipse}. It is noteworthy that the efficiency soars to 1 when the number of counts goes up. And a marked rise appears with the growth of period.
  
