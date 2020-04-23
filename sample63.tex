@@ -292,12 +292,12 @@ f\lambda_0 & \text{$\phi(t) \in[(1-w)\pi,(1+w)\pi]$},
 where $w$ accounts for the eclipsing width (duration) in phase space, and $f$ characterizes the fractional depth of the eclipse, with ($0\leq f \leq 1$; $f = 0$ corresponds to total eclipse). Here the eclipse is assumed to occur around $\phi = \pi$. 
 Again, $\lambda_0$ can be related to the total counts as $C=(1-fw)\lambda_0T$.
 We set $f=0.1$ and $w=0.1$ in our simulations, which are typical of eclipsing CVs, since the radius ratio of WD, companion star and orbit are about 1:10:50. {\bf [try $f$ =0.2, 0.5?$f$ might be too small. better try more values]}
-We test two values for the period, $P$=5258 and 15258 sec. {\bf [some justifications for these values are warranted]} 
+We test three values for the period, $P$=5258, 15258 and 45258 sec. {\bf [some justifications for these values are warranted]} 
 Then the simulation were run 100 times at each set of parameter. Results of detection rate(also taking 90\% as threshold) is shown is Figure \ref{fig:eclipse}. It is noteworthy that the efficiency soars to 1 when the number of counts goes up. And a marked rise appears with the growth of period.
  
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.61]{./figure/sim_LW/eclipse.eps}
+\includegraphics[scale=0.61]{./figure/sim_LW/eclipse_cut.eps}
 \caption{Detection rate obtained from simulation results for eclipsing models. Magenta, red and green denotes for P=45258s, 15258s and 5258s respectively. \label{fig:eclipse}}
 \end{figure}
 
@@ -336,7 +336,7 @@ For the 24 signals, their phase-folded light curve at modulation period, the lon
 
 For left panel, though the GL method could not distinguish background photons, we still define the local background from photometric results, shown as the yellow strip in the left panel of Figure \ref{fig:Figure_p}. The width of strip represents the poisson error range.
 Additionally, since the bin size in phase-folded light curve has no effect on the shape, we chose the bin size between 20 to 50, to get the most distinct display. 
-For middle panel, the valid detection (defined in \ref{longT}) are plotted with dots plus error range. While the non-valid detection are shown in arrows, providing only the upper limits. Meanwhile, the x-axis in right panel were plotted in discontinuous style for better demonstration effect, since the short interval over the last eight observations. 
+For middle panel, the valid detection (defined in \ref{subsec:detect}) are plotted with dots plus error range. While the non-valid detection are shown in arrows, providing only the upper limits. Meanwhile, the x-axis in right panel were plotted in discontinuous style for better demonstration effect, since the short interval over the last eight observations. 
 For right panel, the spectra illustrated here were fitted in the range of 1-8 keV, consistent with the timing analysis. 
 
 Besides, we also did 100 times of simulations for each signal. We had to use sinusoidal variations for simulating process though many of them may deviate much from real shape. The counts rate and period can be directly attained from data, while the amplitude is hard to determine since the deviation. In \citet{2012ApJ...746..165H}, they defined $A_{M}={1-R_{min}}/R_{max}$, and $A_{M}=2A_0/{1+A_0}$, where $R_{min}(R_{max})$ is the minimum (maximum) count rate of the folded light curve. 
@@ -451,7 +451,7 @@ F2 & 267.90974 &	-29.71112 & 42219.03 &-& 1039 &-&-&-  &-&-&-
 \end{deluxetable*}
 
 \section{X-ray spectral analysis}\label{sec:spectra}
-For all candidate periodic sources, we employed the same region as described in section \ref{longT} and combined the individual spectra together by using the CIAO tool \emph {specextract}. Then we made the spectra analysis in XSPEC v12.9.1 over the range of 0.5-8 keV. The adaptive binning had been conducted before the fitting with signal-to-noise ratio of 2. The reason we present the fitting results of 0.5-8 keV here is to constrain the absorption. Notice that the choice of energy range is not consistent with the illustration of spectra in Figure \ref{fig:Figure_p}, even though it has little impact on exhibition. 
+For all candidate periodic sources, we employed the same region as described in section \ref{subsec:detect} and combined the individual spectra together by using the CIAO tool \emph {specextract}. Then we made the spectra analysis in XSPEC v12.9.1 over the range of 0.5-8 keV. The adaptive binning had been conducted before the fitting with signal-to-noise ratio of 2. The reason we present the fitting results of 0.5-8 keV here is to constrain the absorption. Notice that the choice of energy range is not consistent with the illustration of spectra in Figure \ref{fig:Figure_p}, even though it has little impact on exhibition. 
 
 We modeled the spectra by using a bremsstrahlung continuum plus three Gaussian lines centered at 6.40, 6.68 ,and 6.97 keV respectively  \citep{2018ApJS..235...26Z,2019ApJ...882..164X}. And all these model components are multiplied by an absorption component(using the model \emph {phabs} in XSPEC). The spectral analysis results are shown in Table \ref{tab:spec}.
 
