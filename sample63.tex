@@ -340,9 +340,9 @@ Additionally, since the bin size in phase-folded light curve has no effect on th
 For middle panel, the valid detection (defined in \ref{subsec:detect}) are plotted with dots plus error range. While the non-valid detection are shown in arrows, providing only the upper limits. Meanwhile, the x-axis in right panel were plotted in discontinuous style for better demonstration effect, since the short interval over the last eight observations. 
 For right panel, the spectra illustrated here were fitted in the range of 1-8 keV, consistent with the timing analysis. 
 
-Besides, we also did 100 times of simulations for each signal. We had to use sinusoidal variations for simulating process though many of them may deviate much from real shape. The counts rate and period can be directly attained from data, while the amplitude is hard to determine since the deviation. In \citet{2012ApJ...746..165H}, they defined $A_{M}={1-R_{min}}/R_{max}$, and $A_{M}=2A_0/{1+A_0}$, where $R_{min}(R_{max})$ is the minimum (maximum) count rate of the folded light curve. 
-Though the $A_{M}$ depends on the bin size of phase-folded light curve, we still prefer it rather than $A_{rms}$ to get the amplitude since the deviation between sinusoidal variation and real shape sometimes made $A_{0}$ exceeds one when it was calculated from $A_{rms}$. The definition of $A_{rms}$ and the relation between 
-$A_{rms}$ and $A_0$, which were taken by \cite{2012ApJ...746..165H}, are described below.
+Besides, we also did 100 times of simulations for each signal. We had to use sinusoidal variations for simulating process though many of them may deviate much from real shape. The counts rate and period can be directly attained from data, while the amplitude is hard to determine since the deviation. In \citet{2012ApJ...746..165H}, they got $A_0$ from $A_{\mathrm{rms}}$ depended on Rayleigh statistics.
+The definition of $A_{\mathrm{rms}}$ and the relation between 
+$A_{\mathrm{rms}}$ and $A_0$, which were taken by \cite{2012ApJ...746..165H}, are described below.
 \begin{subequations}
 \begin{equation}
 A_{\mathrm{rms}}=\left(\frac{Z_{1}^{2}}{N}\right)^{1 / 2} \frac{N}{N-B}
@@ -355,8 +355,11 @@ A_0=\sqrt{2} A_{\mathrm{rms}}
 \end{equation}
 \end{subequations}
 where equation \ref{Arms} only works for sinusoidal modulations. N and B represent the total counts in source region and local background respectively. $t_{j}$ and $\phi\left(t_{j}\right)$ refer to the arrival time and phase of each photon. $Z_{1}^{2}$ is the classical Rayleigh statistic method \citep{1983A&A...128..245B,2003ApJ...599..465M}.
+Meanwhile, they provided another way to obtain $A_0$. From phase-folded light curve, they defined $A_{M}={1-R_{min}}/R_{max}$, and $A_{M}=2A_0/({1+A_0})$, where $R_{min}(R_{max})$ is the minimum (maximum) count rate of the folded light curve. 
 
-Still, we took 90\% as threshold to get valid detection at 0.1\% accuracy. The percentage of valid detection would be represented by $P_{det}$. And $A_{M}$ was obtained with bin size fixed at 20.
+Though $A_{M}$ depends on the bin size of phase-folded light curve, we still prefer it rather than $A_{rms}$ to get the amplitude, i.e, $A_0$, since the deviation between sinusoidal variation and real shape sometimes made $A_{0}$ exceeds one when it was calculated from $A_{\mathrm{rms}}$. 
+
+Still, we took 90\% as threshold to get valid detection at 0.1\% accuracy. The percentage of valid detection would be represented by $P_{det}$. And $A_{M}$ was obtained with bin size fixed at 20. For directly comparison, we also ran the simulation based on the same $A_{0}$ defined in \citet{2012ApJ...746..165H} for ten collective sources, as shown in column (11) and (12) in Table \ref{tab:src}.
 
 %The periodic sources and their information are shown in Table \ref{tab:src}, which also includes the cross-match results with \cite{2012ApJ...746..165H}. The ten periodic sources discovered by \cite{2012ApJ...746..165H} have also been determined by GL method in this work.
 
@@ -445,7 +448,7 @@ F1 & 267.90974 &	-29.71112 & 42219.03 & 1.00000 &-& 1039 &-&-&-  &-&-&-
 \\(9) The amplitude of variation obtained in \cite{2012ApJ...746..165H}. 
 \\(10) The detection probability of periodicity based on simulations of 100 sinusoidal light curves for each source.
 \\(11) The detection probability of periodicity in \cite{2012ApJ...746..165H}.
-\\(12) The detection probability of periodicity simulated as the same process described in column(9), while the amplitude are taken from column(8).
+\\(12) The detection probability of periodicity simulated as the same process described in column(10), while the amplitude are taken from column(9).
 \\(13) The note gives the significant harmonic detected by the algorithm.
 }
 \end{deluxetable*}
@@ -492,13 +495,13 @@ Based on our current understanding of the shape and distribution of orbital modu
 \subsection{Comparison with previous work} \label{subsec:compare}
 In this work, we took the same observations as used by \cite{2012ApJ...746..165H}. However, unlike \cite{2012ApJ...746..165H} extracted only the some nearby observations , all the observations were applied here for timing analysis. That difference was caused by the mechanisms of methods. As described in section \ref{subsec:GL}, the LS method used by \cite{2012ApJ...746..165H} handled the light curve in time space, while GL method utilized here  processed the phase-folded light curve in phase space with great tolerance for observing gap.
 
- We provide the comparison between the detection rate of these two methods in Figure \ref{fig:com}, which are also shown in column (10) and (11) in Table \ref{tab:src}. To eliminate the effect of different choice of amplitude for the same source, we used the same $A_0$ of these ten sources given by \cite{2012ApJ...746..165H} and applied these to both methods. It can easily be seen that GL method has better performance compared with LS method.
+ We provide the comparison between the detection rate of these two methods in Figure \ref{fig:com}, which are also shown in column (11) and (12) in Table \ref{tab:src}. To eliminate the effect of different choice of amplitude for the same source, we used the same $A_0$ of these ten sources given by \cite{2012ApJ...746..165H} and applied these to both methods. It can easily be seen that GL method has better performance compared with LS method.
 
 The improvement on detecting efficiency and data usage brought more periodic signals than \cite{2012ApJ...746..165H}. Additionally, we operated the simulation not only for sinusoidal variation, but also for eclipsing models to describe the dip in orbital modulation. Combining the simulation results and more than twice the sample, we were allowed to discuss the source properties and the distribution of CVs in galactic bulge region on a better level.
 
 \begin{figure}[htb]
 \includegraphics[scale=0.55]{./figure/sim_LW/Pdet_com.eps}
-\caption{The comparison of efficiency between two methods. H-ID is the sequence number given by \cite{2012ApJ...746..165H}, same as column(5) in Table \ref{tab:src} \label{fig:com}}
+\caption{The comparison of efficiency between two methods. H-ID is the sequence number given by \cite{2012ApJ...746..165H}, same as column(6) in Table \ref{tab:src} \label{fig:com}}
 \end{figure}
 \begin{figure}[htbp]
 \includegraphics[scale=0.53]{./figure/sim_LW/est_obs.eps}
