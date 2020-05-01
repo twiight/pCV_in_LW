@@ -339,26 +339,6 @@ Additionally, since the bin size in phase-folded light curve has no effect on th
 For middle panel, the valid detection (defined in \ref{subsec:detect}) are plotted with dots plus error range. While the non-valid detection are shown in arrows, providing only the upper limits. Meanwhile, the x-axis in right panel were plotted in discontinuous style for better demonstration effect, since the short interval over the last eight observations. 
 For right panel, the spectra illustrated here were fitted in the range of 1-8 keV, consistent with the timing analysis. 
 
-Besides, we also did 100 times of simulations for each signal. We had to use sinusoidal variations for simulating process though many of them may deviate much from real shape. The counts rate and period can be directly attained from data, while the amplitude is hard to determine since the deviation. In \citet{2012ApJ...746..165H}, they got $A_0$ from $A_{\mathrm{rms}}$ depended on Rayleigh statistics.
-The definition of $A_{\mathrm{rms}}$ and the relation between 
-$A_{\mathrm{rms}}$ and $A_0$, which were taken by \cite{2012ApJ...746..165H}, are described below.
-\begin{subequations}
-\begin{equation}
-A_{\mathrm{rms}}=\left(\frac{Z_{1}^{2}}{N}\right)^{1 / 2} \frac{N}{N-B}
-\end{equation}
-\begin{equation}
-Z_{1}^{2}=\frac{2}{N}\left\{\left[\Sigma_{j} \cos \phi\left(t_{j}\right)\right]^{2}+\left[\Sigma_{j} \sin ^{2} \phi\left(t_{j}\right)\right]^{2}\right\}
-\end{equation}
-\begin{equation}\label{Arms}
-A_0=\sqrt{2} A_{\mathrm{rms}}
-\end{equation}
-\end{subequations}
-where equation \ref{Arms} only works for sinusoidal modulations. N and B represent the total counts in source region and local background respectively. $t_{j}$ and $\phi\left(t_{j}\right)$ refer to the arrival time and phase of each photon. $Z_{1}^{2}$ is the classical Rayleigh statistic method \citep{1983A&A...128..245B,2003ApJ...599..465M}.
-Meanwhile, they provided another way to obtain $A_0$. From phase-folded light curve, they defined $A_{M}={1-R_{min}}/R_{max}$, and $A_{M}=2A_0/({1+A_0})$, where $R_{min}(R_{max})$ is the minimum (maximum) count rate of the folded light curve. 
-
-Though $A_{M}$ depends on the bin size of phase-folded light curve, we still prefer it rather than $A_{rms}$ to get the amplitude, i.e, $A_0$, since the deviation between sinusoidal variation and real shape sometimes made $A_{0}$ exceeds one when it was calculated from $A_{\mathrm{rms}}$. 
-
-Still, we took 90\% as threshold to get valid detection at 0.1\% accuracy. The percentage of valid detection would be represented by $P_{det}$. And $A_{M}$ was obtained with bin size fixed at 20. For directly comparison, we also ran the simulation based on the same $A_{0}$ defined in \citet{2012ApJ...746..165H} for ten collective sources, as shown in column (11) and (12) in Table \ref{tab:src}.
 
 %The periodic sources and their information are shown in Table \ref{tab:src}, which also includes the cross-match results with \cite{2012ApJ...746..165H}. The ten periodic sources discovered by \cite{2012ApJ...746..165H} have also been determined by GL method in this work.
 
@@ -453,11 +433,15 @@ F1 & 267.90974 &	-29.71112 & 42219.03 & 1.00000 &-& 1039 &-&-&-  &-&-&-
 \end{deluxetable*}
 
 \section{X-ray spectral analysis}\label{sec:spectra}
-For all candidate periodic sources, we employed the same region as described in section \ref{subsec:detect} and combined the individual spectra together by using the CIAO tool \emph {specextract}. Then we made the spectra analysis in XSPEC v12.9.1 over the range of 0.5-8 keV. The adaptive binning had been conducted before the fitting with signal-to-noise ratio of 2. The reason we present the fitting results of 0.5-8 keV here is to constrain the absorption. Notice that the choice of energy range is not consistent with the illustration of spectra in Figure \ref{fig:Figure_p}, even though it has little impact on exhibition. 
+We perform spectral analysis for all confirmed periodic sources, which offers insight on their nature. Source and background spectra are extracted from the same regions as described in Section~\ref{subsec:detect}, along with the ancillary response files (ARFs) and redistribution matrix files (RMFs), by using the CIAO tool \emph{specextract}. 
+The spectra of a given source from individual observations are then coadded to form a combined spectrum, with the corresponding ARFs and RMFS weighted by the effective exposure. 
+{\bf We further bin the spectra over the 0.5--8 keV range to achieve a minimum of 20 counts and a signal-to-noise ratio greater than 2 per bin.}
 
-We modeled the spectra by using a bremsstrahlung continuum plus three Gaussian lines centered at 6.40, 6.68 ,and 6.97 keV respectively  \citep{2018ApJS..235...26Z,2019ApJ...882..164X}. And all these model components are multiplied by an absorption component(using the model \emph {phabs} in XSPEC). The spectral analysis results are shown in Table \ref{tab:spec}.
+The resultant spectra are analyzed using XSPEC v12.9.1.
+%The reason we present the fitting results of 0.5-8 keV here is to constrain the absorption. Notice that the choice of energy range is not consistent with the illustration of spectra in Figure \ref{fig:Figure_p}, even though it has little impact on exhibition. 
+Since these sources are expected to be CVs, we adopt a fiducial spectral model \citep{2018ApJS..235...26Z,2019ApJ...882..164X}, which is a bremsstrahlung plus three Gaussian lines centered at 6.40, 6.68 and 6.97 keV, all components subject to an unknown line-of-sight absorption (\emph{phabs} in XSPEC). The spectral analysis results are shown in Table \ref{tab:spec}.
 
-The plasma temperature could not be well constrained caused by the intrinsic hard spectrum and the bad sensitivity of \emph{Chandra} above 8 keV. Hence we fixed $T_b$ at 40 keV under the not-constrained situation, which is the typical value of IPs \citep{2016ApJ...826..160H}.
+Since most sources only have a moderate number of counts, the plasma temperature is not always well constrained, not be well constrained caused by the intrinsic hard spectrum and the bad sensitivity of \emph{Chandra} above 8 keV. Hence we fixed $T_b$ at 40 keV under the not-constrained situation, which is the typical value of IPs \citep{2016ApJ...826..160H}.
 Besides, we provided the information of Fe K emission line, which had been proved as the great probe of the mass of white dwarfs in CVs \citep{2016ApJ...818..136X}. The flux ratio of Fe XXVI to Fe XXV emission lines (hereafter $I_{7.0}/I_{6.7}$) could be interrelated to the $M_{WD}$ by uniting the $I_{7.0}/I_{6.7}$-$T_{max}$ and $T_{max}-M_{WD}$ relations \citep{2019ApJ...882..164X}. Due to the low metallicity in LW field, most of sources in our table have weak emission of iron line. We employed the XSPEC tool \emph{multifake} to derive the confidence range of $I_{7.0}/I_{6.7}$ and $I_{6.4}/I_{6.7}$. Then we excluded the source whose 68.3\% confidence range for the intensities of three iron lines are all below zero. After the filtering process, we only got 2 sources with valid detection of at least one iron lines. The value of flux ratios are presented together with their 68.3\% confidence range (see column (4) and (5) in Table \ref{tab:spec}). Referring to the $I_{7.0}/I_{6.7}$-$M_{WD}$ relation in \citet{2019ApJ...882..164X}, the WD mass of LW 21(or LW 22) and LW 23 would be around 0.8 and 0.5 $M_\odot$ if they are IPs, or 1.2 and 1.0 $M_\odot$ if DNe, respectively.
 
 We divided the 22 periodic sources into two groups based on their luminosities obtained above. H(L) sources included the sources having 1-8 keV luminosity above(below) $\rm 1 \times 10^{32}~erg ~s^{-1}$. The number of sources in these two set were 6 and 16 respectively. Their cumulative spectrum were fitted with the same model for individual sources. And the best-fit results are presented in Table \ref{tab:pCV_spec}. The H and L spectra are shown in Figure \ref{fig:pCV_spec} over the energy range of 0.5-8 keV. Using the XSPEC tool \emph{multifake}, we have gotten well constrained line ratios for this two subtypes. Cosulting the $I_{7.0}/I_{6.7}$-$M_{WD}$ relation in \citet{2019ApJ...882..164X}, the H sources have mean $M_{WD}$ about 0.8(1.2) $M_\odot$ if they are IPs (non-mCVs). The $M_{WD}$ of L sources would be lower than 0.4 $M_\odot$ suppose they are non-mCVs. However,we have no reliable relation for polars.
@@ -471,94 +455,16 @@ We divided the 22 periodic sources into two groups based on their luminosities o
 %% The equation counter will reset when it encounters the \appendix
 %% command and will number appendix equations (A1), (A2), etc. The
 
-\section{The properties of X-ray periodic sources}\label{sec:properties}
-It can be seen that the luminosities of these periodic sources are ranged from $\rm 10^{31}$ to $\rm 10^{33}~erg~s^{-1}$, combined with the period distribution, mostly about 1-3 hours , all suggest that they belong to cataclysmic variables. 
-Before we start to discuss the nature of these periodic sources, we should take a look at CVs in the field. Their period distribution, including polars, IPs and DNe, are shown in Figure \ref{fig:N_P}.
-It can be easily seen that the period distribution of these LW sources resembles those of polars more than others, since most of these are below the period gap. While DNe and IPs both have a considerable number of systems with period beyond the gap. According to the our simulation results in section \ref{subsec:simulation}, this can not be resulted from selection bias of algorithm. 
-
-\begin{figure*}[htbp]
-\centering
-\includegraphics[scale=0.73]{./figure/CV/N_P.eps}
-\caption{The period distribution of the LW sources (dark-blue line), the spin (purple) and orbital (green) periods of IPs ,the periods (sky-blue) of polars and the orbital (red) periods of DNe from the RK catalog(\cite{2003A&A...404..301R}, version 7.20). The famous period gap(yellow line) and period minimum(orange dashed line) are also plotted, whose value are taken from \citep{2011ApJS..194...28K}.\label{fig:N_P}}
-\end{figure*}
-For non-magnetic CVs like DNe, the common phase-folded light curve exhibits narrow dip, due to the eclipse of the white dwarf, as modeled in section \ref{simulation}. The typical light curve is like \#22 in Figure \ref{fig:Figure_p}. 	While the simultaneous existence of \#21 and \#22 and the 2\% period difference suggest it might be an asynchronous intermediate polar. Besides, the central dip of \#3, \#18 and \#20 are also similar to this circumstance. Since the eclipse happens in nearly all types of CVs, we could only set three as an upper limit of number of DNe in our sample.
-
-For magnetic CVs, including IPs and polars, their orbit modulation could give rise to more complicated shape of light curve. For polars, consider the simplistic situation, whose accretion is nearly onto one pole, then the shape of light curve would be divided into two groups. Suppose an inclination $i$, the angle between rotation axis and magnetic axis is $\beta$, the magnetic colatitude of accretion is $\epsilon$. Then if $i+\beta+\epsilon > 90^{\circ}$, we would see alternately two poles, the shape would be like \#6, with half of orbit cycle showing no emission. This so-called "two-pole"  behavior are more complicated if the accretion goes to both two poles, the gap with half orbit cycle would be partially filled (like \#16) by second pole's emission. Sometimes it may completely reverse in hard X-ray band cause the accretion shock in second pole producing most of hard X-rays \citep{1985A&A...148L..14H}. On the other hand, if $i+\beta+\epsilon < 90^{\circ}$ and $\beta < i$, in which the accreting pole is always visible , the modulation would caused by the obscuring of accretion stream. The width and depth of the dip in phase space are determined by many reasons and totally unpredictable. 
-
-For IPs, the orbital modulation could be resulted by eclipse of WD, the absorption of X-rays emitted near the white
-dwarf surface \citep{1993MNRAS.260..299H}, or the "disc-overflow" model in \citep{1996MNRAS.280..937N}. The shape of light curve in IPs could be any kinds of dips or sinusoidal variation. The only robust identification is to determine both their spin and orbital period, like the \#1(\#14) and \#21(\#22) in our sample.
-
-Based on our current understanding of the shape and distribution of orbital modulation, we conclude that the periodic sources discoverd are mostly polars, with several IPs(two determined) and DNe(three as upper limit). 
-
-\section{Discussion}\label{sec:discussion}
-\subsection{Comparison with previous work} \label{subsec:compare}
-In this work, we took the same observations as used by \cite{2012ApJ...746..165H}. However, unlike \cite{2012ApJ...746..165H} extracted only the some nearby observations , all the observations were applied here for timing analysis. That difference was caused by the mechanisms of methods. As described in section \ref{subsec:GL}, the LS method used by \cite{2012ApJ...746..165H} handled the light curve in time space, while GL method utilized here  processed the phase-folded light curve in phase space with great tolerance for observing gap.
-
- We provide the comparison between the detection rate of these two methods in Figure \ref{fig:com}, which are also shown in column (11) and (12) in Table \ref{tab:src}. To eliminate the effect of different choice of amplitude for the same source, we used the same $A_0$ of these ten sources given by \cite{2012ApJ...746..165H} and applied these to both methods. It can easily be seen that GL method has better performance compared with LS method.
-
-The improvement on detecting efficiency and data usage brought more periodic signals than \cite{2012ApJ...746..165H}. Additionally, we operated the simulation not only for sinusoidal variation, but also for eclipsing models to describe the dip in orbital modulation. Combining the simulation results and more than twice the sample, we were allowed to discuss the source properties and the distribution of CVs in galactic bulge region on a better level.
-
-\begin{figure}[htb]
-\includegraphics[scale=0.55]{./figure/sim_LW/Pdet_com.eps}
-\caption{The comparison of efficiency between two methods. H-ID is the sequence number given by \cite{2012ApJ...746..165H}, same as column(6) in Table \ref{tab:src} \label{fig:com}}
-\end{figure}
-\begin{figure}[htbp]
-\includegraphics[scale=0.53]{./figure/sim_LW/est_obs.eps}
-\caption{The comparison between estimated and the real detected number of sources. \label{fig:NP_sim}}
-\end{figure}
-
-\subsection{The estimation for X-ray source population}
-Firstly, we assumed that the fraction of polars in the total sample of 667 sources is $\alpha$. The sinusoidal variation happens in "two-pole" situation, which takes $90^\circ$ in total $360^\circ$. Then we can set 25\% as the upper limit for polars with sinusoidal variation intrinsically. We assumed the even distribution for amplitude from 0.5 to 0.9 and took the simulation results for P=5540s and P=45540s as the detection rate for period under(60\% of the total number) and beyond the period gap(40\% of the total number). The value of 60\% and 40\% are estimated from Figure \ref{fig:N_P}. Then we set width=100 for our binning of counts, from 75 to 3575, which consist nearly all detected sources. The choice of value balance the number of counts taken from observation and simulation. 
- The predicted number of periodic sources which "should" be detected in each bin is calculated by:
-\begin{equation}
-Np_{i}=N_i\times DR \times 25\% \times 667 \times \alpha	
-\end{equation}
-$N_i$ is the product of number of sources detected in the bin. DR denotes the detection rate weighted from simulation. Then we sum all $Np_{i}$ together and force it equals to 20,  getting $\alpha$ about 14\%. The comparison between $Np_{i}$ and the real detected 20 periodic sources(two determined IPs excluded) are plotted in Figure \ref{fig:NP_sim}. The perfect agreement between their population proves the validity of estimation.
-
-Since the real luminosity function should be gentle than that of  total sample, which means there could be more polars at the bright band, then it demanding lower numbers of polar to balance the high detection rate for bright sources. 
-In general, the 14\% should be treated as the upper limit for polars, especially when we considered all the 20 sources(already excluding the two IPs) are polars. 
-
-While for DNe, we are constrained by lack of reliable X-ray luminosity function(XLF). We have already set the three as the upper limit of DNe. The steeper XLF for DNe than the XLF for total sample would only contribute the lower limit for their proportion. This conflict increases the  uncertainty of estimation. Here we still present the estimation for fraction of DNe.
-Intrinsically, the eclipse of white dwarf depends on the inclination angle, radius of companion star and orbit. If we set $\beta$ as probability of eclipsing, $i$ as inclination, $R_1$,$R_2$,$R_{orb}$ as radius of WD, companion star and orbit respectively. Then the $\beta$ need to fullfill:
-\begin{equation}
-{R_{orb}\times cos(90-\beta)}\leq { R_1+R_2}
-\end{equation}
-We took parameters from simulation operated by \citep{2011ApJS..194...28K}, in which $R_1$ is fixed at when $M_{WD}$ equals 0.75 solar mass. Assuming that inclination is even distributed in $(0,90^\circ)$, the probability of eclipsing(hereafter EP) are plotted in Figure \ref{fig:simpCV}.
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[scale=0.55]{./figure/p_inCV.eps}
-\caption{Probability of eclipsing in CVs. The break around 3.2hours resulted by different model for CVs beyond and below the period gap.\label{fig:simpCV}}
-\end{figure}
-We utilized the simulation results of 5258s and 15258s as the detection rate for period under(75\% of the total number) and beyond the period gap(25\% of the total number). The fraction was taken from the DNe distribution in solar neighborhood. Besides, EP was chosen as 0.18 and 0.20 for this two types.
-Similarly, the predicted number of periodic non-mCVs which "should" be detected in each counts bin is:
-\begin{equation}
-Np_{i}=N_i\times DR \times EP \times 667 \times \alpha	
-\end{equation}
-Since the sum of $Np_{i}$ was assigned as three, the $\alpha$ would be around 0.67 if we set $\rm 10^{32}~erg~s^{-1}$ (roughly corresponding 675 counts) as the upper limit of luminosity for DNe. The rationality of the limit has been proved by the DNe sample from solar neighborhood in \citep{2016ApJ...818..136X}, based on Suzaku observation. The uncertainty of this fraction comes from our limited acquaintance about XLF for DNe, and the subjective diagnostic for the phase-folded light curve. 
-\section{Summary}\label{sec:summary}
-
-1. We have discovered 22 periodic sources with 24 signal in the LW by using GL method, including 10 of them already found by LS method in \cite{2012ApJ...746..165H}. Their luminosity range locates at $\rm 10^{31}-10^{33}~erg~s^{-1} $.The general feature of these 22 sources resembles that of polars. Three of them with narrow dip are likely DNe. Two of them are determined as IP.
-
-2.  We estimate the mass of WD from two sources with great identification for Fe XXVI and Fe XXV emission lines, i.e. 0.8 $M_\odot$ for \#21(\#22), and 0.5(1.0) $M_\odot$ for \#23 if being an IP(DN). 
-
-3. We provide well-constrained fraction of polars in the whole sample, i.e, 14\% as the upper limit. The estimation on fraction of non-mCVs is about 45\% while the certainty is restricted by limited appreciation about their XLF. Combined with the period distribution, we conclude that the periodic sources are mainly polars with relatively harder spectra, especially in the luminosity range that lower than $\rm 10^{32}~erg~s^{-1}$. Besides, the H sources (L>$\rm 10^{32}~erg~s^{-1}$), whose emission is mostly contributed by IPs, indicate  $M_{WD} \sim 0.8 M_\odot$, consistent with the previous result $0.8\pm 0.07 M_\odot$ in \citep{2018ApJ...853..182Y}.
-
-4. The lower luminosity and narrow eclipsing model for orbital modulation reduced the detection rate simultaneously for periodicity. That may explain why we had no trace on non-mCVs in GCR in earlier period searching work.
-
-5. We proved the higher detection rate, more usage of data and ignorance of observation gap for GL method compared with LS method. It is noteworthy that the shape of light curve in GL method could be modified according to different scenarios. It was applied on detection of planetary transits by using customized eclipsing model \citep{2002A&A...395..625A}. For the utility of GL method, there is still room for improvement in the future.
-
-
 \begin{deluxetable*}{LCLCCCCR}
 %\tablenum{1}
 \tablecaption{X-ray spectral properties of the periodic sources \label{tab:spec}}
 \tablewidth{0pt}
 \tablehead{
-\colhead{ID} & \colhead{$N_{H}$} & \colhead{$T_b$} &
-\colhead{$I_{6.4}/I_{6.7}$} & \colhead{$I_{7.0}/I_{6.7}$} & \colhead{$I_{6.7}$}& \colhead{$\chi^2/dof$} &  \colhead{Luminosity(1-8keV)} 
-\\
-\colhead{} & \colhead{$10^{22} cm^{-2}$} & \colhead{keV} & 
-\colhead{} & \colhead{} & \colhead{$\rm 10^{-8} ph~ cm^{-2}~s^{-1} $}&\colhead{}  & \colhead{$\rm 10^{31} ~erg~s^{-1}$}
+\colhead{ID} & \colhead{$N_{\rm H}$} & \colhead{$T_{\rm b}$} &
+\colhead{$I_{6.4}/I_{6.7}$} & \colhead{$I_{7.0}/I_{6.7}$} & \colhead{$I_{6.7}$}& \colhead{$\chi^2/dof$} &  \colhead{$L_{\rm 1-8}$} 
+%\\
+%\colhead{} & \colhead{$10^{22} cm^{-2}$} & %\colhead{keV} & 
+%\colhead{} & \colhead{} & \colhead{$\rm 10^{-8} ph~ cm^{-2}~s^{-1} $}&\colhead{}  & \colhead{$\rm 10^{31} ~erg~s^{-1}$}
 }
 \decimals
 \decimalcolnumbers
@@ -612,19 +518,145 @@ Since the sum of $Np_{i}$ was assigned as three, the $\alpha$ would be around 0.
 \\
 24 & $0.83^{+0.83}_{-3.31}$ & $2.30^{+1.59}_{-0.85}$ &-&-&-&  0.80/2 & $0.77^{+7.82}_{-0.36}$
 \\
+%\hline
 \hline
+F1 & $0.35^{+0.16}_{-0.13}$ & $4.78^{+3.55}_{-1.58}$ &-&-&-& 1.19/55  & $8.73^{+1.09}_{-0.98}$ \\
 \hline
-F1 & $0.35^{+0.16}_{-0.13}$ & $4.78^{+3.55}_{-1.58}$ &-&-&-& 1.19/55  & $8.73^{+1.09}_{-0.98}$
+H & $1.99^{+0.10}_{-0.97}$ & 40(fixed) &  $0.28^{+0.06}_{-0.05}$ & $0.78^{+0.10}_{-0.09}$  & $8.76^{+3.57}_{-3.57}$ & 1.19/205 &
+\\
+L & $1.33^{+0.12}_{-0.11}$ & 40(fixed) & $0.03^{+0.08}_{-0.03}$  & $0.14^{+0.15}_{-0.14}$ & $2.53^{+1.10}_{-1.10}$ & 1.09/168 &
 \enddata
-\tablecomments{Columns:\\
-(1) Source sequence number assigned in the order of increasing period. The same source with multiple period signal was denoted as \dag and \ddag.\\
- (2) An estimate of the absorption coefficient from spectral model fits.\\
- (3) The best-fit plasma temperature if constrained well. Otherwise we fix it at 40 keV.\\
- (4) or (5) Flux ratios of the 6.4 or 7.0 keV line to the 6.7 keV line.\\
- (6) The intensity of 6.7 keV line.\\
- (7)The Reduced $\chi^2$ and degrees of freedom (dof) of best-fit.\\
- (8) The estimate of luminosity for source distance at 8 kpc.}
+\tablecomments{
+(1) Source sequence number as in Table~\ref{tab:src}, except ``H'' and ``L'', which refer to the bright and faint group of sources (excluding source F1), i.e., having 1--8 keV luminosity above (below) $10^{32}\rm~erg~s^{-1}$. {\dag}Sources 1 and 14 are the same source with two different periods; {\ddag}Sources 21 and 22 are the same source with two different periods. 
+(2) Line-of-sight absorption column density, in units of $10^{22}\rm~cm^{-2}$.
+(3) The bremsstrahlung temperature, in units of keV. Fixed at a value of 40 keV when the spectrum provides no signficant constraint to this parameter.
+ (4)-(5) Flux ratio of the 6.4 or 7.0 keV line to the 6.7 keV line.
+ (6) Integrated flux of the 6.7 keV line, in units of $10^{-8}\rm~ph~cm^{-2}~s^{-1}$.
+ (7) $\chi^2$ and degree of freedom of the best-fit model.
+ (8) 1--8 keV unabsorbed luminosity, in units of $10^{31}\rm~erg~s^{-1}$. Quoted errors are at the 90\% confidence level.}
 \end{deluxetable*}
+
+
+%\begin{deluxetable*}{CCCCCCC}
+%%\tablenum{1}
+%\tablewidth{25cm}
+%\tablecaption{Spectral fit results for the periodic %sources (combined) \label{tab:pCV_spec}}
+%\tablehead{
+%\colhead{Set} & \colhead{$N_{H_{phabs}}$} & %\colhead{$T_{b}$}&
+%\colhead{$I_{6.4}/I_{6.7}$} & %\colhead{$I_{7.0}/I_{6.7}$} & \colhead{$I_{6.7}$}& %\colhead{$\chi^2/dof$}
+%\\
+%\colhead{} & \colhead{$10^{22} cm^{-2}$} & %\colhead{keV} & 
+%\colhead{} & \colhead{} & \colhead{$\rm 10^{-8} ph~ cm^{-2}~s^{-1} $}&\colhead{}
+%}
+
+%\decimals
+%\decimalcolnumbers
+%\startdata
+%H & $1.99^{+0.10}_{-0.97}$ & 40(fixed) &  $0.28^{+0.06}_{-0.05}$ & $0.78^{+0.10}_{-0.09}$  & $8.76^{+3.57}_{-3.57}$ & 1.19/205
+%\\
+%L & $1.33^{+0.12}_{-0.11}$ & 40(fixed) & $0.03^{+0.08}_{-0.03}$  & $0.14^{+0.15}_{-0.14}$ & $2.53^{+1.10}_{-1.10}$ & 1.09/168
+%\enddata
+%\end{deluxetable*}
+
+\section{The properties of X-ray periodic sources}\label{sec:properties}
+It can be seen that the luminosities of these periodic sources are ranged from $\rm 10^{31}$ to $\rm 10^{33}~erg~s^{-1}$, combined with the period distribution, mostly about 1-3 hours , all suggest that they belong to cataclysmic variables. 
+Before we start to discuss the nature of these periodic sources, we should take a look at CVs in the field. Their period distribution, including polars, IPs and DNe, are shown in Figure \ref{fig:N_P}.
+It can be easily seen that the period distribution of these LW sources resembles those of polars more than others, since most of these are below the period gap. While DNe and IPs both have a considerable number of systems with period beyond the gap. According to the our simulation results in section \ref{subsec:simulation}, this can not be resulted from selection bias of algorithm. 
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[scale=0.73]{./figure/CV/N_P.eps}
+\caption{The period distribution of the LW sources (dark-blue line), the spin (purple) and orbital (green) periods of IPs ,the periods (sky-blue) of polars and the orbital (red) periods of DNe from the RK catalog(\cite{2003A&A...404..301R}, version 7.20). The famous period gap(yellow line) and period minimum(orange dashed line) are also plotted, whose value are taken from \citep{2011ApJS..194...28K}.\label{fig:N_P}}
+\end{figure*}
+For non-magnetic CVs like DNe, the common phase-folded light curve exhibits narrow dip, due to the eclipse of the white dwarf, as modeled in section \ref{simulation}. The typical light curve is like \#22 in Figure \ref{fig:Figure_p}. 	While the simultaneous existence of \#21 and \#22 and the 2\% period difference suggest it might be an asynchronous intermediate polar. Besides, the central dip of \#3, \#18 and \#20 are also similar to this circumstance. Since the eclipse happens in nearly all types of CVs, we could only set three as an upper limit of number of DNe in our sample.
+
+For magnetic CVs, including IPs and polars, their orbit modulation could give rise to more complicated shape of light curve. For polars, consider the simplistic situation, whose accretion is nearly onto one pole, then the shape of light curve would be divided into two groups. Suppose an inclination $i$, the angle between rotation axis and magnetic axis is $\beta$, the magnetic colatitude of accretion is $\epsilon$. Then if $i+\beta+\epsilon > 90^{\circ}$, we would see alternately two poles, the shape would be like \#6, with half of orbit cycle showing no emission. This so-called "two-pole"  behavior are more complicated if the accretion goes to both two poles, the gap with half orbit cycle would be partially filled (like \#16) by second pole's emission. Sometimes it may completely reverse in hard X-ray band cause the accretion shock in second pole producing most of hard X-rays \citep{1985A&A...148L..14H}. On the other hand, if $i+\beta+\epsilon < 90^{\circ}$ and $\beta < i$, in which the accreting pole is always visible , the modulation would caused by the obscuring of accretion stream. The width and depth of the dip in phase space are determined by many reasons and totally unpredictable. 
+
+For IPs, the orbital modulation could be resulted by eclipse of WD, the absorption of X-rays emitted near the white
+dwarf surface \citep{1993MNRAS.260..299H}, or the "disc-overflow" model in \citep{1996MNRAS.280..937N}. The shape of light curve in IPs could be any kinds of dips or sinusoidal variation. The only robust identification is to determine both their spin and orbital period, like the \#1(\#14) and \#21(\#22) in our sample.
+
+Based on our current understanding of the shape and distribution of orbital modulation, we conclude that the periodic sources discoverd are mostly polars, with several IPs(two determined) and DNe(three as upper limit). 
+
+\section{Discussion}\label{sec:discussion}
+\subsection{Comparison with previous work} \label{subsec:compare}
+In this work, we took the same observations as used by \cite{2012ApJ...746..165H}. However, unlike \cite{2012ApJ...746..165H} extracted only the some nearby observations , all the observations were applied here for timing analysis. That difference was caused by the mechanisms of methods. As described in section \ref{subsec:GL}, the LS method used by \cite{2012ApJ...746..165H} handled the light curve in time space, while GL method utilized here  processed the phase-folded light curve in phase space with great tolerance for observing gap.
+
+ We provide the comparison between the detection rate of these two methods in Figure \ref{fig:com}, which are also shown in column (11) and (12) in Table \ref{tab:src}. To eliminate the effect of different choice of amplitude for the same source, we used the same $A_0$ of these ten sources given by \cite{2012ApJ...746..165H} and applied these to both methods. It can easily be seen that GL method has better performance compared with LS method.
+
+The improvement on detecting efficiency and data usage brought more periodic signals than \cite{2012ApJ...746..165H}. Additionally, we operated the simulation not only for sinusoidal variation, but also for eclipsing models to describe the dip in orbital modulation. Combining the simulation results and more than twice the sample, we were allowed to discuss the source properties and the distribution of CVs in galactic bulge region on a better level.
+
+\begin{figure}[htb]
+\includegraphics[scale=0.55]{./figure/sim_LW/Pdet_com.eps}
+\caption{The comparison of efficiency between two methods. H-ID is the sequence number given by \cite{2012ApJ...746..165H}, same as column(6) in Table \ref{tab:src} \label{fig:com}}
+\end{figure}
+\begin{figure}[htbp]
+\includegraphics[scale=0.53]{./figure/sim_LW/est_obs.eps}
+\caption{The comparison between estimated and the real detected number of sources. \label{fig:NP_sim}}
+\end{figure}
+
+Besides, we also did 100 times of simulations for each signal. We had to use sinusoidal variations for simulating process though many of them may deviate much from real shape. The counts rate and period can be directly attained from data, while the amplitude is hard to determine since the deviation. In \citet{2012ApJ...746..165H}, they got $A_0$ from $A_{\mathrm{rms}}$ depended on Rayleigh statistics.
+The definition of $A_{\mathrm{rms}}$ and the relation between 
+$A_{\mathrm{rms}}$ and $A_0$, which were taken by \cite{2012ApJ...746..165H}, are described below.
+\begin{subequations}
+\begin{equation}
+A_{\mathrm{rms}}=\left(\frac{Z_{1}^{2}}{N}\right)^{1 / 2} \frac{N}{N-B}
+\end{equation}
+\begin{equation}
+Z_{1}^{2}=\frac{2}{N}\left\{\left[\Sigma_{j} \cos \phi\left(t_{j}\right)\right]^{2}+\left[\Sigma_{j} \sin ^{2} \phi\left(t_{j}\right)\right]^{2}\right\}
+\end{equation}
+\begin{equation}\label{Arms}
+A_0=\sqrt{2} A_{\mathrm{rms}}
+\end{equation}
+\end{subequations}
+where equation \ref{Arms} only works for sinusoidal modulations. N and B represent the total counts in source region and local background respectively. $t_{j}$ and $\phi\left(t_{j}\right)$ refer to the arrival time and phase of each photon. $Z_{1}^{2}$ is the classical Rayleigh statistic method \citep{1983A&A...128..245B,2003ApJ...599..465M}.
+Meanwhile, they provided another way to obtain $A_0$. From phase-folded light curve, they defined $A_{M}={1-R_{min}}/R_{max}$, and $A_{M}=2A_0/({1+A_0})$, where $R_{min}(R_{max})$ is the minimum (maximum) count rate of the folded light curve. 
+
+Though $A_{M}$ depends on the bin size of phase-folded light curve, we still prefer it rather than $A_{rms}$ to get the amplitude, i.e, $A_0$, since the deviation between sinusoidal variation and real shape sometimes made $A_{0}$ exceeds one when it was calculated from $A_{\mathrm{rms}}$. 
+
+Still, we took 90\% as threshold to get valid detection at 0.1\% accuracy. The percentage of valid detection would be represented by $P_{det}$. And $A_{M}$ was obtained with bin size fixed at 20. For directly comparison, we also ran the simulation based on the same $A_{0}$ defined in \citet{2012ApJ...746..165H} for ten collective sources, as shown in column (11) and (12) in Table \ref{tab:src}.
+
+\subsection{The estimation for X-ray source population}
+Firstly, we assumed that the fraction of polars in the total sample of 667 sources is $\alpha$. The sinusoidal variation happens in "two-pole" situation, which takes $90^\circ$ in total $360^\circ$. Then we can set 25\% as the upper limit for polars with sinusoidal variation intrinsically. We assumed the even distribution for amplitude from 0.5 to 0.9 and took the simulation results for P=5540s and P=45540s as the detection rate for period under(60\% of the total number) and beyond the period gap(40\% of the total number). The value of 60\% and 40\% are estimated from Figure \ref{fig:N_P}. Then we set width=100 for our binning of counts, from 75 to 3575, which consist nearly all detected sources. The choice of value balance the number of counts taken from observation and simulation. 
+ The predicted number of periodic sources which "should" be detected in each bin is calculated by:
+\begin{equation}
+Np_{i}=N_i\times DR \times 25\% \times 667 \times \alpha	
+\end{equation}
+$N_i$ is the product of number of sources detected in the bin. DR denotes the detection rate weighted from simulation. Then we sum all $Np_{i}$ together and force it equals to 20,  getting $\alpha$ about 14\%. The comparison between $Np_{i}$ and the real detected 20 periodic sources(two determined IPs excluded) are plotted in Figure \ref{fig:NP_sim}. The perfect agreement between their population proves the validity of estimation.
+
+Since the real luminosity function should be gentle than that of  total sample, which means there could be more polars at the bright band, then it demanding lower numbers of polar to balance the high detection rate for bright sources. 
+In general, the 14\% should be treated as the upper limit for polars, especially when we considered all the 20 sources(already excluding the two IPs) are polars. 
+
+While for DNe, we are constrained by lack of reliable X-ray luminosity function(XLF). We have already set the three as the upper limit of DNe. The steeper XLF for DNe than the XLF for total sample would only contribute the lower limit for their proportion. This conflict increases the  uncertainty of estimation. Here we still present the estimation for fraction of DNe.
+Intrinsically, the eclipse of white dwarf depends on the inclination angle, radius of companion star and orbit. If we set $\beta$ as probability of eclipsing, $i$ as inclination, $R_1$,$R_2$,$R_{orb}$ as radius of WD, companion star and orbit respectively. Then the $\beta$ need to fullfill:
+\begin{equation}
+{R_{orb}\times cos(90-\beta)}\leq { R_1+R_2}
+\end{equation}
+We took parameters from simulation operated by \citep{2011ApJS..194...28K}, in which $R_1$ is fixed at when $M_{WD}$ equals 0.75 solar mass. Assuming that inclination is even distributed in $(0,90^\circ)$, the probability of eclipsing(hereafter EP) are plotted in Figure \ref{fig:simpCV}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.55]{./figure/p_inCV.eps}
+\caption{Probability of eclipsing in CVs. The break around 3.2hours resulted by different model for CVs beyond and below the period gap.\label{fig:simpCV}}
+\end{figure}
+We utilized the simulation results of 5258s and 15258s as the detection rate for period under(75\% of the total number) and beyond the period gap(25\% of the total number). The fraction was taken from the DNe distribution in solar neighborhood. Besides, EP was chosen as 0.18 and 0.20 for this two types.
+Similarly, the predicted number of periodic non-mCVs which "should" be detected in each counts bin is:
+\begin{equation}
+Np_{i}=N_i\times DR \times EP \times 667 \times \alpha	
+\end{equation}
+Since the sum of $Np_{i}$ was assigned as three, the $\alpha$ would be around 0.67 if we set $\rm 10^{32}~erg~s^{-1}$ (roughly corresponding 675 counts) as the upper limit of luminosity for DNe. The rationality of the limit has been proved by the DNe sample from solar neighborhood in \citep{2016ApJ...818..136X}, based on Suzaku observation. The uncertainty of this fraction comes from our limited acquaintance about XLF for DNe, and the subjective diagnostic for the phase-folded light curve. 
+\section{Summary}\label{sec:summary}
+
+1. We have discovered 22 periodic sources with 24 signal in the LW by using GL method, including 10 of them already found by LS method in \cite{2012ApJ...746..165H}. Their luminosity range locates at $\rm 10^{31}-10^{33}~erg~s^{-1} $.The general feature of these 22 sources resembles that of polars. Three of them with narrow dip are likely DNe. Two of them are determined as IP.
+
+2.  We estimate the mass of WD from two sources with great identification for Fe XXVI and Fe XXV emission lines, i.e. 0.8 $M_\odot$ for \#21(\#22), and 0.5(1.0) $M_\odot$ for \#23 if being an IP(DN). 
+
+3. We provide well-constrained fraction of polars in the whole sample, i.e, 14\% as the upper limit. The estimation on fraction of non-mCVs is about 45\% while the certainty is restricted by limited appreciation about their XLF. Combined with the period distribution, we conclude that the periodic sources are mainly polars with relatively harder spectra, especially in the luminosity range that lower than $\rm 10^{32}~erg~s^{-1}$. Besides, the H sources (L>$\rm 10^{32}~erg~s^{-1}$), whose emission is mostly contributed by IPs, indicate  $M_{WD} \sim 0.8 M_\odot$, consistent with the previous result $0.8\pm 0.07 M_\odot$ in \citep{2018ApJ...853..182Y}.
+
+4. The lower luminosity and narrow eclipsing model for orbital modulation reduced the detection rate simultaneously for periodicity. That may explain why we had no trace on non-mCVs in GCR in earlier period searching work.
+
+5. We proved the higher detection rate, more usage of data and ignorance of observation gap for GL method compared with LS method. It is noteworthy that the shape of light curve in GL method could be modified according to different scenarios. It was applied on detection of planetary transits by using customized eclipsing model \citep{2002A&A...395..625A}. For the utility of GL method, there is still room for improvement in the future.
+
+
 
 \begin{figure*}[htbp]
 \centering
@@ -633,29 +665,6 @@ F1 & $0.35^{+0.16}_{-0.13}$ & $4.78^{+3.55}_{-1.58}$ &-&-&-& 1.19/55  & $8.73^{+
 The spectrum for H, L set of periodic sources are plotted in red and black respectively. \label{fig:pCV_spec}}
 \end{figure*}
 
-\begin{deluxetable*}{CCCCCCC}
-%\tablenum{1}
-\tablewidth{25cm}
-\tablecaption{Spectral fit results for the periodic sources (combined) \label{tab:pCV_spec}}
-\tablehead{
-\colhead{Set} & \colhead{$N_{H_{phabs}}$} & \colhead{$T_{b}$}&
-\colhead{$I_{6.4}/I_{6.7}$} & \colhead{$I_{7.0}/I_{6.7}$} & \colhead{$I_{6.7}$}& \colhead{$\chi^2/dof$}
-\\
-\colhead{} & \colhead{$10^{22} cm^{-2}$} & \colhead{keV} & 
-\colhead{} & \colhead{} & \colhead{$\rm 10^{-8} ph~ cm^{-2}~s^{-1} $}&\colhead{}
-}
-
-\decimals
-\decimalcolnumbers
-\startdata
-H & $1.99^{+0.10}_{-0.97}$ & 40(fixed) &  $0.28^{+0.06}_{-0.05}$ & $0.78^{+0.10}_{-0.09}$  & $8.76^{+3.57}_{-3.57}$ & 1.19/205
-\\
-L & $1.33^{+0.12}_{-0.11}$ & 40(fixed) & $0.03^{+0.08}_{-0.03}$  & $0.14^{+0.15}_{-0.14}$ & $2.53^{+1.10}_{-1.10}$ & 1.09/168
-\enddata
-\end{deluxetable*}
-
-\clearpage
-\newpage
 
 \appendix
 \section{A brief introduction about GL method}\label{GL}
