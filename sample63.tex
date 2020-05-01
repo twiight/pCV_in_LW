@@ -266,7 +266,7 @@ The chosen periods are representative of the actually searched ranges (Section~\
 the adopted total counts well sample the range of observed counts from the LW sources.
 
 We thus simulate 100 light curves for each combination of parameters, taking into account Poisson errors and the exact start and end times of the 13 ACIS-I observations. 
-{\bf The arrival time of each simulated count is further randomly modified by an amount of 3.2 sec to mimic the effect of ACIS frame time.}
+ The arrival time of each simulated count is further randomly modified by an amount of 3.2 sec to mimic the effect of ACIS frame time.
 The simulated light curve is then searched for a periodic signal using the GL algorithm in the same manner as in Section~\ref{subsec:appli}.
 We claim a valid detection if the found period has a detection probability greater than 90\% and its value is consistent with the input period to within 0.1\%. 
 The detection rate for a given combination of parameters is taken to be the fraction of the 100 light curves with a valid detection.
@@ -292,7 +292,7 @@ f\lambda_0 & \text{$\phi(t) \in[(1-w)\pi,(1+w)\pi]$},
 where $w$ accounts for the eclipsing width (duration) in phase space, and $f$ characterizes the relative depth of the eclipse ($0\leq f \leq 1$; $f = 0$ corresponds to total eclipse). Here the eclipse is assumed to occur around $\phi = \pi$. 
 Again, $\lambda_0$ can be related to the total counts as $C=(1-fw)\lambda_0T$.
 We set $f=0.1$ and $w=0.1$ in our simulations, which are typical of eclipsing CVs, since the radius ratio of WD, companion star and orbit are about 1:10:50. {\bf [try $f$ =0.2, 0.5?$f$ might be too small. better try more values]}
-We test three values for the period, $P$=5258, 15258 and 45258 sec. {\bf [some justifications for these values are warranted]} 
+We test three values for the period, $P$=5258, 15258 and 45258 sec. 
 Then the simulation were run 100 times at each set of parameter. Results of detection rate(also taking 90\% as threshold) is shown is Figure \ref{fig:eclipse}. It is noteworthy that the efficiency soars to 1 when the number of counts goes up. And a marked rise appears with the growth of period.
  
 \begin{figure}[ht!]
@@ -444,7 +444,7 @@ Since these sources are expected to be CVs, we adopt a fiducial spectral model \
 Since most sources only have a moderate number of counts, the plasma temperature is not always well constrained, not be well constrained caused by the intrinsic hard spectrum and the bad sensitivity of \emph{Chandra} above 8 keV. Hence we fixed $T_b$ at 40 keV under the not-constrained situation, which is the typical value of IPs \citep{2016ApJ...826..160H}.
 Besides, we provided the information of Fe K emission line, which had been proved as the great probe of the mass of white dwarfs in CVs \citep{2016ApJ...818..136X}. The flux ratio of Fe XXVI to Fe XXV emission lines (hereafter $I_{7.0}/I_{6.7}$) could be interrelated to the $M_{WD}$ by uniting the $I_{7.0}/I_{6.7}$-$T_{max}$ and $T_{max}-M_{WD}$ relations \citep{2019ApJ...882..164X}. Due to the low metallicity in LW field, most of sources in our table have weak emission of iron line. We employed the XSPEC tool \emph{multifake} to derive the confidence range of $I_{7.0}/I_{6.7}$ and $I_{6.4}/I_{6.7}$. Then we excluded the source whose 68.3\% confidence range for the intensities of three iron lines are all below zero. After the filtering process, we only got 2 sources with valid detection of at least one iron lines. The value of flux ratios are presented together with their 68.3\% confidence range (see column (4) and (5) in Table \ref{tab:spec}). Referring to the $I_{7.0}/I_{6.7}$-$M_{WD}$ relation in \citet{2019ApJ...882..164X}, the WD mass of LW 21(or LW 22) and LW 23 would be around 0.8 and 0.5 $M_\odot$ if they are IPs, or 1.2 and 1.0 $M_\odot$ if DNe, respectively.
 
-We divided the 22 periodic sources into two groups based on their luminosities obtained above. H(L) sources included the sources having 1-8 keV luminosity above(below) $\rm 1 \times 10^{32}~erg ~s^{-1}$. The number of sources in these two set were 6 and 16 respectively. Their cumulative spectrum were fitted with the same model for individual sources. And the best-fit results are presented in Table \ref{tab:pCV_spec}. The H and L spectra are shown in Figure \ref{fig:pCV_spec} over the energy range of 0.5-8 keV. Using the XSPEC tool \emph{multifake}, we have gotten well constrained line ratios for this two subtypes. Cosulting the $I_{7.0}/I_{6.7}$-$M_{WD}$ relation in \citet{2019ApJ...882..164X}, the H sources have mean $M_{WD}$ about 0.8(1.2) $M_\odot$ if they are IPs (non-mCVs). The $M_{WD}$ of L sources would be lower than 0.4 $M_\odot$ suppose they are non-mCVs. However,we have no reliable relation for polars.
+We divided the 22 periodic sources into two groups based on their luminosities obtained above. H(L) sources included the sources having 1-8 keV luminosity above(below) $\rm 1 \times 10^{32}~erg ~s^{-1}$. The number of sources in these two set were 6 and 16 respectively. Their cumulative spectrum were fitted with the same model for individual sources. And the best-fit results are presented in Table \ref{tab:spec}. The H and L spectra are shown in Figure \ref{fig:pCV_spec} over the energy range of 0.5-8 keV. Using the XSPEC tool \emph{multifake}, we have gotten well constrained line ratios for this two subtypes. Cosulting the $I_{7.0}/I_{6.7}$-$M_{WD}$ relation in \citet{2019ApJ...882..164X}, the H sources have mean $M_{WD}$ about 0.8(1.2) $M_\odot$ if they are IPs (non-mCVs). The $M_{WD}$ of L sources would be lower than 0.4 $M_\odot$ suppose they are non-mCVs. However,we have no reliable relation for polars.
 
 
 %% Appendix material should be preceded with a single \appendix command.
@@ -471,22 +471,22 @@ We divided the 22 periodic sources into two groups based on their luminosities o
 \startdata
 1^\dag & $0.51^{+0.75}_{-0.34}$ & 40(fixed) &-&-&-& 1.14/5  & $1.82^{+0.64}_{-0.51}$
 \\
-2 & $2.17^{+0.54}_{-0.46}$ & $20.66^{+56.89}_{-9.92}$ &-&-&-& 0.86/78  & $23.11^{+2.70}_{-2.01}$
+2 & $2.17^{+0.54}_{-0.46}$ & $20.7^{+56.9}_{-9.92}$ &-&-&-& 0.86/78  & $23.1^{+2.70}_{-2.01}$
 \\
-3 & $1.34^{+0.70}_{-0.40}$ & $46.41^{+46.05}_{-38.52}$ &-&-&-& 0.98/33  & $6.61^{+1.05}_{-0.77}$
+3 & $1.34^{+0.70}_{-0.40}$ & $46.4^{+46.1}_{-38.5}$ &-&-&-& 0.98/33  & $6.61^{+1.05}_{-0.77}$
 \\
-4 & $1.15^{+0.69}_{-0.50}$ & $11.26^{+53.31}_{-4.71}$ &-&-&-& 0.91/27  & $22.50^{+2.94}_{-4.42}$
+4 & $1.15^{+0.69}_{-0.50}$ & $11.3^{+53.3}_{-4.71}$ &-&-&-& 0.91/27  & $22.5^{+2.94}_{-4.42}$
 \\
 5 & $1.02^{+0.27}_{-0.23}$ & 40(fixed) &-&-&-& 1.00/33 &  $5.59^{+0.77}_{-0.70}$
 \\
-6 & $1.82^{+0.57}_{-0.50}$ & $6.90^{+12.38}_{-2.90}$ 
+6 & $1.82^{+0.57}_{-0.50}$ & $6.90^{+12.4}_{-2.90}$ 
 	&-&-&-& 1.12/42 &  $9.23^{+1.24}_{-1.11}$
 \\
-7 & $1.62^{+0.62}_{-0.49}$ & $41.57^{+42.96}_{-32.34}$ &-&-&-& 0.86/39 &  $6.70^{+0.89}_{-0.81}$
+7 & $1.62^{+0.62}_{-0.49}$ & $41.6^{+43.0}_{-32.3}$ &-&-&-& 0.86/39 &  $6.70^{+0.89}_{-0.81}$
 \\
 8 & $2.06^{+1.51}_{-0.94}$ & 40(fixed) &-&-&-& 0.93/7 &  $1.76^{+0.54}_{-0.42}$
 \\
-9 & $1.29^{+1.34}_{-0.67}$ & $20.79^{+95.79}_{-20.79}$ &-&-&-& 1.10/7 &  $3.50^{+1.22}_{-0.86}$
+9 & $1.29^{+1.34}_{-0.67}$ & $20.8^{+95.8}_{-20.8}$ &-&-&-& 1.10/7 &  $3.50^{+1.22}_{-0.86}$
 \\
 10 & $2.50^{+7.25}_{-1.56}$ & 40(fixed) &-&-&-& 0.85/5 &  $2.14^{+1.76}_{-0.75}$
 \\
@@ -498,33 +498,33 @@ We divided the 22 periodic sources into two groups based on their luminosities o
 \\
 14^\dag & $0.51^{+0.75}_{-0.34}$ & 40(fixed) &-&-&-&  1.14/5 &  $1.82^{+0.64}_{-0.51}$
 \\
-15 & $1.46^{+0.48}_{-0.38}$ & 40(fixed) &-&-&-&  1.16/42 & $12.85^{+1.77}_{-1.61}$
+15 & $1.46^{+0.48}_{-0.38}$ & 40(fixed) &-&-&-&  1.16/42 & $12.8^{+1.77}_{-1.61}$
 \\
 16 & $0.89^{+0.18}_{-0.16}$ & 40(fixed) &-&-&-&  1.43/51  & $8.47^{+0.88}_{-0.83}$
 \\
-17 & $2.68^{+0.63}_{-0.52}$ & 40(fixed) &-&-&-&  0.75/36 & $11.28^{+1.61}_{-1.45}$
+17 & $2.68^{+0.63}_{-0.52}$ & 40(fixed) &-&-&-&  0.75/36 & $11.3^{+1.61}_{-1.45}$
 \\
 18 & $2.01^{+0.92}_{-0.66}$ & 40(fixed) &-&-&-&  0.53/14  & $4.21^{+0.89}_{-0.77}$
 \\
-19 & $1.82^{+0.10}_{-0.10}$ & 40(fixed) &-&-&-& 0.95/185  & $83.87^{+3.25}_{-3.16}$
+19 & $1.82^{+0.10}_{-0.10}$ & 40(fixed) &-&-&-& 0.95/185  & $83.9^{+3.25}_{-3.16}$
 \\
-20 & $2.09^{+2.45}_{-1.16}$ & $4.04^{+28.24}_{-2.54}$ &-&-&-& 1.04/12  & $5.39^{+1.81}_{-1.47}$
+20 & $2.09^{+2.45}_{-1.16}$ & $4.04^{+28.2}_{-2.54}$ &-&-&-& 1.04/12  & $5.39^{+1.81}_{-1.47}$
 \\
-21^\ddag & $2.83^{+0.25}_{-0.23}$ & 40(fixed) & $0.47^{+0.35}_{-0.24}$ & $0.91^{+0.38}_{-0.60}$ & 31.71 & 1.10/147  & $59.99^{+3.25}_{-3.12}$
+21^\ddag & $2.83^{+0.25}_{-0.23}$ & 40(fixed) & $0.47^{+0.35}_{-0.24}$ & $0.91^{+0.38}_{-0.60}$ & 31.7 & 1.10/147  & $60.0^{+3.25}_{-3.12}$
 \\
-22^\ddag & $2.83^{+0.25}_{-0.23}$ & 40(fixed) & $0.47^{+0.35}_{-0.24}$ & $0.91^{+0.38}_{-0.60}$ &  31.71 & 1.10/147  & $59.99^{+3.25}_{-3.12}$
+22^\ddag & $2.83^{+0.25}_{-0.23}$ & 40(fixed) & $0.47^{+0.35}_{-0.24}$ & $0.91^{+0.38}_{-0.60}$ &  31.7 & 1.10/147  & $60.0^{+3.25}_{-3.12}$
 \\
-23 & $1.83^{+0.44}_{-0.37}$ & 40(fixed) & $ <0.52 $& $0.51^{+0.80}_{-0.47}$ & 10.09 & 1.47/35  & $9.23^{+1.22}_{-1.13}$
+23 & $1.83^{+0.44}_{-0.37}$ & 40(fixed) & $ <0.52 $& $0.51^{+0.80}_{-0.47}$ & 10.1 & 1.47/35  & $9.23^{+1.22}_{-1.13}$
 \\
-24 & $0.83^{+0.83}_{-3.31}$ & $2.30^{+1.59}_{-0.85}$ &-&-&-&  0.80/2 & $0.77^{+7.82}_{-0.36}$
+24 & $0.83^{+3.31}_{-0.83}$ & $2.30^{+1.59}_{-0.85}$ &-&-&-&  0.80/2 & $0.77^{+7.82}_{-0.36}$ 
 \\
 %\hline
 \hline
 F1 & $0.35^{+0.16}_{-0.13}$ & $4.78^{+3.55}_{-1.58}$ &-&-&-& 1.19/55  & $8.73^{+1.09}_{-0.98}$ \\
 \hline
-H & $1.99^{+0.10}_{-0.97}$ & 40(fixed) &  $0.28^{+0.06}_{-0.05}$ & $0.78^{+0.10}_{-0.09}$  & $8.76^{+3.57}_{-3.57}$ & 1.19/205 &
+H & $1.99^{+0.10}_{-0.97}$ & 40(fixed) &  $0.28^{+0.06}_{-0.05}$ & $0.78^{+0.10}_{-0.09}$  & $8.76^{+3.57}_{-3.57}$ & 1.19/205 & $31.8^{+0.95}_{-0.95}	$
 \\
-L & $1.33^{+0.12}_{-0.11}$ & 40(fixed) & $0.03^{+0.08}_{-0.03}$  & $0.14^{+0.15}_{-0.14}$ & $2.53^{+1.10}_{-1.10}$ & 1.09/168 &
+L & $1.33^{+0.12}_{-0.11}$ & 40(fixed) & $0.03^{+0.08}_{-0.03}$  & $0.14^{+0.15}_{-0.14}$ & $2.53^{+1.10}_{-1.10}$ & 1.09/168 & $5.36^{+0.24}_{-0.24}$ 
 \enddata
 \tablecomments{
 (1) Source sequence number as in Table~\ref{tab:src}, except ``H'' and ``L'', which refer to the bright and faint group of sources (excluding source F1), i.e., having 1--8 keV luminosity above (below) $10^{32}\rm~erg~s^{-1}$. {\dag}Sources 1 and 14 are the same source with two different periods; {\ddag}Sources 21 and 22 are the same source with two different periods. 
