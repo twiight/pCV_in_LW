@@ -428,31 +428,36 @@ F1 & 267.90974 &	-29.71112 & 42219.03 & 1.00000 &-& 1039 &-&-&-  &-&-&-
 \end{deluxetable*}
 
 \section{X-ray spectral analysis}\label{sec:spectra}
-We perform spectral analysis for all confirmed periodic sources to gain insight on their nature. Source and background spectra are extracted from the same regions as described in Section~\ref{subsec:detect}, along with the ancillary response files (ARFs) and redistribution matrix files (RMFs), by using the CIAO tool \emph{specextract}. 
-The spectra from individual observations are then coadded to form a combined spectrum of a given source, with the corresponding ARFs and RMFS weighted by the effective exposure. 
+We perform spectral analysis for all 23 confirmed periodic sources to gain insight on their nature. Source and background spectra are extracted from the same regions as described in Section~\ref{subsec:detect}, along with the ancillary response files (ARFs) and redistribution matrix files (RMFs), by using the CIAO tool \emph{specextract}. 
+The spectra from individual observations are then coadded to form a combined spectrum of a given source, with the corresponding ARFs and RMFs weighted by the effective exposure. 
 {\bf Further, the spectrum is adaptively binned to achieve a minimum of 20 counts and a signal-to-noise ratio greater than 2 per bin.}
 
 The resultant spectra are analyzed using XSPEC v12.9.1.
 %The reason we present the fitting results of 0.5-8 keV here is to constrain the absorption. Notice that the choice of energy range is not consistent with the illustration of spectra in Figure \ref{fig:Figure_p}, even though it has little impact on exhibition. 
-Since these sources are expected to be CVs, we adopt a fiducial spectral model \citep{2018ApJS..235...26Z,2019ApJ...882..164X}, which is a bremsstrahlung plus three Gaussian lines centered at 6.40, 6.68 and 6.97 keV, all components subject to an unknown line-of-sight absorption (\emph{phabs} in XSPEC). 
-The three lines (hereafter referred to as the 6.4, 6.7 and 7.0 keV lines) correspond to neutral Fe K$\alpha$, Fe\,XXV K$\alpha$ and Fe\,XXVI Ly$\alpha$, respectively. The latter two lines, in particular, are expected to arise from the post-shock plasma near the WD surface, and their flux ratio is robust tracer of the plasma temperature \citep{2016ApJ...818..136X}.
+Since these sources are expected to be CVs, we adopt a fiducial spectral model \citep{2018ApJS..235...26Z,2019ApJ...882..164X}, which consists of a bremsstrahlung continuum and three Gaussian lines centered at 6.40, 6.68 and 6.97 keV, all these components subject to an unknown line-of-sight absorption (\emph{phabs} in XSPEC). 
+The three lines (hereafter referred to as the 6.4, 6.7 and 7.0 keV lines) correspond to neutral Fe K$\alpha$, Fe\,XXV K$\alpha$ and Fe\,XXVI Ly$\alpha$, respectively, which are among the most commonly detected emission lines in CV spectra. The latter two lines, in particular, arise from the post-shock plasma near the WD surface, and their flux ratio ($I_{7.0}/I_{6.7}$) has proven to be a robust tracer of the plasma temperature, hence also a good indicator of the WD mass \citep{2016ApJ...818..136X}.
 
-It turns out that the plasma temperature ($T_{\rm b}$) is not well constrained in most sources, due to a moderate number of counts and the insufficient sensitivity of {\it Chandra} at energies above 8 keV. Hence for such cases we fix $T_{\rm b}$ at 40 keV, which is typical of IPs \citep{2016ApJ...818..136X,2016ApJ...826..160H}.
-The spectral analysis results are shown in Table \ref{tab:spec}.
+It turns out that the plasma temperature ($T_{\rm b}$) is not well constrained in most sources, due to a moderate number of counts and the insufficient sensitivity of {\it Chandra} at energies above 8 keV. Hence for such cases we fix $T_{\rm b}$ at 40 keV, which is typical of IPs when their hard X-ray (up to tens of keV) spectra are available \citep{2016ApJ...818..136X,2016ApJ...826..160H}.
+Setting a lower value of T_{\rm b}$, for instance, at 20 keV, does not affect our following conclusions. 
 
-Besides, we provided the information of Fe K emission line, which had been proved as the great probe of the mass of white dwarfs in CVs \citep{2016ApJ...818..136X}. 
-The flux ratio of Fe XXVI to Fe XXV emission lines (hereafter $I_{7.0}/I_{6.7}$) could be interrelated to the $M_{WD}$ by uniting the $I_{7.0}/I_{6.7}$-$T_{max}$ and $T_{max}-M_{WD}$ relations \citep{2019ApJ...882..164X}. Due to the low metallicity in LW field, most of sources in our table have weak emission of iron line. We employed the XSPEC tool \emph{multifake} to derive the confidence range of $I_{7.0}/I_{6.7}$ and $I_{6.4}/I_{6.7}$. Then we excluded the source whose 68.3\% confidence range for the intensities of three iron lines are all below zero. After the filtering process, we only got 2 sources with valid detection of at least one iron lines. The value of flux ratios are presented together with their 68.3\% confidence range (see column (4) and (5) in Table \ref{tab:spec}). Referring to the $I_{7.0}/I_{6.7}$-$M_{WD}$ relation in \citet{2019ApJ...882..164X}, the WD mass of LW 21(or LW 22) and LW 23 would be around 0.8 and 0.5 $M_\odot$ if they are IPs, or 1.2 and 1.0 $M_\odot$ if DNe, respectively.
+%The flux ratio of Fe XXVI to Fe XXV emission lines (hereafter $I_{7.0}/I_{6.7}$) could be interrelated to the $M_{WD}$ by uniting the $I_{7.0}/I_{6.7}$-$T_{max}$ and $T_{max}-M_{WD}$ relations \citep{2019ApJ...882..164X}. 
+Again due to the limited number of counts, most of the periodic sources show weak or non-detected Fe lines.  
+We have applied a bootstrapping method using the {\it multifake} tool in XSPEC to derive the 90\% confidence range for the fluxes of the three Fe lines. It turns out that only two sources, LW21 (same as LW22) and LW23, show a significant line at both 6.7 keV and 7.0 keV.  
+The flux ratio and its 90\% error are similarly determined for these two sources, resulting in $I_{7.0}/I_{6.7} = 0.91^{+0.38}_{-0.60}$ ($0.51^{+0.80}_{-0.47}$) for LW21 (LW23).   
+%The value of flux ratios are presented together with their 68.3\% confidence range (see column (4) and (5) in Table \ref{tab:spec}). 
+According to the empirical line ratio--WD mass  ($I_{7.0}/I_{6.7}$--$M_{\rm WD}$) relation of \citet{2019ApJ...882..164X}, which is calibrated with CVs in the solar neighborhood, we can infer $M_{\rm WD} \approx 0.8$ (0.5) $M_\odot$ for LW21 (LW23), provided that both sources are IPs. If instead they are DNe, the same value of $I_{7.0}/I_{6.7}$ would require a more massive WD, in which case we infer $M_{\rm WD} \approx 1.2$ (1.0) $M_\odot$ for LW21 (LW23).
+It is noteworthy that there exists no empirical $I_{7.0}/I_{6.7}$--$M_{\rm WD}$ relation for polars, mainly due to the small number of known polars in the solar neighborhood \citep{2019ApJ...882..164X}. 
 
-We divided the 22 periodic sources into two groups based on their luminosities obtained above. H(L) sources included the sources having 1-8 keV luminosity above(below) $\rm 1 \times 10^{32}~erg ~s^{-1}$. The number of sources in these two set were 6 and 16 respectively. Their cumulative spectrum were fitted with the same model for individual sources. And the best-fit results are presented in Table \ref{tab:spec}. The H and L spectra are shown in Figure \ref{fig:pCV_spec} over the energy range of 0.5-8 keV. Using the XSPEC tool \emph{multifake}, we have gotten well constrained line ratios for this two subtypes. Cosulting the $I_{7.0}/I_{6.7}$-$M_{WD}$ relation in \citet{2019ApJ...882..164X}, the H sources have mean $M_{WD}$ about 0.8(1.2) $M_\odot$ if they are IPs (non-mCVs). The $M_{WD}$ of L sources would be lower than 0.4 $M_\odot$ suppose they are non-mCVs. However,we have no reliable relation for polars.
+We further divide the 22 periodic sources into two groups based on their luminosities. Here source F1 is excluded since we are only interested in sources located in the bulge. The H (L) group consists of 6 (16) sources having an unabsorbed 1--8 keV luminosity above (below) $\rm 1.0\times10^{32}~erg ~s^{-1}$, which is derived from the individual best-fit spectral model. 
+The cumulative spectrum of each group is fitted with the same fiducial model, i.e., bremsstrahlung plus three Gaussian lines. The improved S/N in the cumulative spectrum allows us to detect all three Fe lines and constrain their flux ratios.  
+%And the best-fit results are presented in Table \ref{tab:spec}. 
+%The H and L spectra are shown in Figure \ref{fig:pCV_spec} over the energy range of 0.5-8 keV. 
+%Using the XSPEC tool \emph{multifake}, we have gotten well constrained line ratios for this two subtypes. 
+The group has $I_{7.0}/I_{6.7} = 0.78^{+0.10}_{-0.09}$, thus inferring a mean WD mass of $M_{\rm WD} \approx 0.8$ (1.2) $M_\odot$ if they are IPs (DNe). 
+On the other hand, the L group shows $I_{7.0}/I_{6.7} = 0.14^{+0.15}_{-0.14}$.
 
+Results of the above spectral analysis are summarized in Table \ref{tab:spec}.
 
-%% Appendix material should be preceded with a single \appendix command.
-%% There should be a \section command for each appendix. Mark appendix
-%% subsections with the same markup you use in the main body of the paper.
-
-%% Each Appendix (indicated with \section) will be lettered A, B, C, etc.
-%% The equation counter will reset when it encounters the \appendix
-%% command and will number appendix equations (A1), (A2), etc. The
 
 \begin{deluxetable*}{LCLCCCCR}
 %\tablenum{1}
@@ -566,11 +571,13 @@ L & $1.33^{+0.12}_{-0.11}$ & 40(fixed) & $0.03^{+0.08}_{-0.03}$  & $0.14^{+0.15}
 
 \section{Discussion}\label{sec:discussion}
 \subsection{Comparison with previous work} \label{subsec:compare}
-We have found 25 periodic signals from 23 sources in the LW. This is to be contrasted with the 10 periodic signals from 10 sources found by  \cite{2012ApJ...746..165H}, which are all recovered by us (Table~\ref{tab:src}), while the remaining 15 periods are new detections. 
+We have found 25 periodic signals from 23 sources in the LW. This is to be contrasted with the 10 periodic signals from 10 sources found by  \cite{2012ApJ...746..165H}, which are all recovered in this work (Table~\ref{tab:src}), while the remaining 15 periods are new detections. 
 Since \cite{2012ApJ...746..165H} and this work have used the same set of {\it Chandra} observations, 
-this difference must be due to the different period searching methods employed.
+this difference must be oweing to the different period searching methods employed.
 
- Unlike \cite{2012ApJ...746..165H} extracted only the several nearby observations, all the observations were applied here for timing analysis. That difference was caused by the mechanisms of methods. As described in section \ref{subsec:GL}, the LS method used by \cite{2012ApJ...746..165H} handled the light curve in time space, while GL method utilized here  processed the phase-folded light curve in phase space with great tolerance for observing gap.
+\cite{2012ApJ...746..165H} employed the LS periodogram,
+%extracted only the several nearby observations, all the observations were applied here for timing analysis. That difference was caused by the mechanisms of methods. 
+which, as described in Section~\ref{subsec:GL}, handles the light curve in time space, while the GL algorithm processes the light curve in phase space with tolerance for observing gaps. {\bf We have applied the LS periodogram to our data in essentially the same way as \cite{2012ApJ...746..165H} and confirmed that only those 10 periods can be detected by this method.}
 
 Besides, we also did 100 times of simulations for each signal. We had to use sinusoidal variations for simulating process though many of them may deviate much from real shape. The counts rate and period can be directly attained from data, while the amplitude is hard to determine since the deviation. In \citet{2012ApJ...746..165H}, they got $A_0$ from $A_{\mathrm{rms}}$ depended on Rayleigh statistics.
 The definition of $A_{\mathrm{rms}}$ and the relation between 
@@ -671,6 +678,13 @@ Since the sum of $Np_{i}$ was assigned as three, the $\alpha$ would be around 0.
 
 We thank Xiaojie Xu and Zhenlin Zhu for helpful discussions. This work is supported by the National Key Research and Development Program of China under grant 2017YFA0402703.
 
+%% Appendix material should be preceded with a single \appendix command.
+%% There should be a \section command for each appendix. Mark appendix
+%% subsections with the same markup you use in the main body of the paper.
+
+%% Each Appendix (indicated with \section) will be lettered A, B, C, etc.
+%% The equation counter will reset when it encounters the \appendix
+%% command and will number appendix equations (A1), (A2), etc. The
 \newpage
 \appendix
 \section{A brief introduction to the Gregory-Loredo algorithm}\label{GL}
